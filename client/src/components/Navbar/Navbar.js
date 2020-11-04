@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "../Button";
 import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
 
@@ -6,7 +7,7 @@ const Navbar = () => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
-      setClicked(true)
+      clicked ? setClicked(false) : setClicked(true)
   }
 
   return (
@@ -28,6 +29,8 @@ const Navbar = () => {
           );
         })}
       </ul>
+      <Button>Sign Up</Button>
+      <Button>Login</Button>
     </nav>
   );
 };

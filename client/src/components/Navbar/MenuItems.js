@@ -10,12 +10,12 @@ export const MenuItems = [
         cName: 'nav-links',
     },
     {
-        title: 'About RiftStats',
+        title: 'About Us',
         url: '/',
         cName: 'nav-links',
     },
     {
-        title: 'Login',
+        title: 'U.gg',
         url: '/',
         cName: 'nav-links',
     },
