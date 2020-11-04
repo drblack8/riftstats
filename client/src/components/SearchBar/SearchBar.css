@@ -1,0 +1,35 @@
+.search-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+  }
+
+.search-input {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: rgb(31, 28, 28);
+    font-size: 16px;
+    transition: .4s;
+    line-height: 21px;
+    width: 400px;
+    padding-left: 5%;
+}
+
+.button-anchor {
+    float: right;
+    width: 40px;
+    height: 21px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
