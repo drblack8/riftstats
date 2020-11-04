@@ -1,4 +1,4 @@
-const MenuItems = [
+export const MenuItems = [
     {
         title: 'Home',
         url: '/',
@@ -10,20 +10,18 @@ const MenuItems = [
         cName: 'nav-links',
     },
     {
-        title: 'About RiftStats',
+        title: 'About Us',
         url: '/',
         cName: 'nav-links',
     },
     {
         title: 'Login',
         url: '/',
-        cName: 'nav-links',
+        cName: 'nav-links-mobile',
     },
     {
         title: 'Sign Up',
         url: '/',
-        cName: 'nav-links',
+        cName: 'nav-links-mobile',
     },
 ]
-
-export default MenuItems
