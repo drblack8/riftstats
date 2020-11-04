@@ -1,4 +1,4 @@
-import React from React;
+import React from 'react';
 import SearchBar from "../SearchBar/SearchBar";
 
 const Summoner = () => {
