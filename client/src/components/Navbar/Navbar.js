@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button } from "../Button";
+import { NavLink } from "react-router-dom";
+import { Button } from "../Button/Button";
 import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
 
@@ -22,9 +23,9 @@ const Navbar = () => {
         {MenuItems.map((item, idx) => {
           return (
             <li key={idx}>
-              <a className={item.cName} href={item.url}>
+              <NavLink className={item.cName} to={item.url}>
                 {item.title}
-              </a>
+              </NavLink>
             </li>
           );
         })}
