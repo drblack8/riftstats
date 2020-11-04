@@ -1,39 +1,65 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "../Button/Button";
+import { LoggedMenu } from "./LoggedMenu";
 import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
-
+  const [logged, setLogged] = useState(false);
   const handleClick = () => {
-      clicked ? setClicked(false) : setClicked(true)
-  }
+    clicked ? setClicked(false) : setClicked(true);
+  };
 
-  return (
-    <nav className="NavbarItems">
-      <h1 className="navbar-logo">
-        RiftStats<i className="fab fa-react"></i>
-      </h1>
-      <div className="menu-icon" onClick={handleClick}>
-          <i className={clicked ? "fas fa-times": "fas fa-bars"}></i>
-      </div>
-      <ul className={clicked ? "nav-menu active" : "nav-menu"}>
-        {MenuItems.map((item, idx) => {
-          return (
-            <li key={idx}>
-              <NavLink className={item.cName} to={item.url}>
-                {item.title}
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
-      <Button>Sign Up</Button>
-      <Button>Login</Button>
-    </nav>
-  );
+  if (!logged) {
+    return (
+      <nav className="NavbarItems">
+        <h1 className="navbar-logo">
+          RiftStats<i className="fab fa-react"></i>
+        </h1>
+        <div className="menu-icon" onClick={handleClick}>
+          <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
+        </div>
+        <ul className={clicked ? "nav-menu active" : "nav-menu"}>
+          {MenuItems.map((item, idx) => {
+            return (
+              <li key={idx}>
+                <NavLink className={item.cName} to={item.url}>
+                  {item.title}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+        <NavLink to='/login'><Button>Login</Button></NavLink>
+        <NavLink to='/signup'><Button>Sign Up</Button></NavLink>
+      </nav>
+    );
+  } else {
+    return (
+      <nav className="NavbarItems">
+        <h1 className="navbar-logo">
+          RiftStats<i className="fab fa-react"></i>
+        </h1>
+        <div className="menu-icon" onClick={handleClick}>
+          <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
+        </div>
+        <ul className={clicked ? "nav-menu active" : "nav-menu"}>
+          {LoggedMenu.map((item, idx) => {
+            return (
+              <li key={idx}>
+                <NavLink className={item.cName} to={item.url}>
+                  {item.title}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+        <NavLink to='/'><Button>Logout</Button></NavLink>
+      </nav>
+    );
+  }
 };
 
 export default Navbar;

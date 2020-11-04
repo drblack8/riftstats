@@ -1,4 +1,4 @@
-export const MenuItems = [
+export const LoggedMenu = [
     {
         title: 'Home',
         url: '/',
@@ -15,13 +15,8 @@ export const MenuItems = [
         cName: 'nav-links',
     },
     {
-        title: 'Login',
-        url: '/login',
+        title: 'Logout',
+        url: '/',
         cName: 'nav-links-mobile',
-    },
-    {
-        title: 'Sign Up',
-        url: '/signup',
-        cName: 'nav-links-mobile',
-    },
+    }
 ]
