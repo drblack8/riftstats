@@ -15,13 +15,13 @@ export const MenuItems = [
         cName: 'nav-links',
     },
     {
-        title: 'U.gg',
+        title: 'Login',
         url: '/',
-        cName: 'nav-links',
+        cName: 'nav-links-mobile',
     },
     {
         title: 'Sign Up',
         url: '/',
-        cName: 'nav-links',
+        cName: 'nav-links-mobile',
     },
 ]

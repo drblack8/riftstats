@@ -36,9 +36,10 @@
     border-radius: 4px;
     font-size: 18px;
     color: #fff;
+    margin-right: 10px;
 }
 
-.btn-large {
+.btn--large {
     padding: 12px 26x;
     border-radius: 4px;
     font-size: 20px;

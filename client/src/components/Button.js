@@ -2,8 +2,8 @@ import React from 'react'
 import './Button.css'
 
 const styles = [
-    'butn-primary',
-    'btn-outline'
+    'btn--primary',
+    'btn--outline'
 ]
 
 const sizes = [
