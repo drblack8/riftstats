@@ -24,12 +24,15 @@
 }
 
 .button-anchor {
-    float: right;
+    position: absolute;
+    right: 10px;
     width: 40px;
+    color: black;
     height: 21px;
     border-radius: 50%;
     background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }

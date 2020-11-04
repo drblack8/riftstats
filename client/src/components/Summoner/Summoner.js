@@ -5,6 +5,7 @@ const Summoner = () => {
     return (
         <div className='sum-page'>
             <SearchBar />
+            <h1>help</h1>
         </div>
     )
 }
