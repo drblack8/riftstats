@@ -6,3 +6,7 @@
     /* font goes here */
     font-family: 'Roboto', sans-serif;
 }
+
+body {
+    background-color: darkgrey;
+}
