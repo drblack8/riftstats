@@ -54,7 +54,8 @@ const Match = (props) => {
   }
     return (
         <div className='solo-match'>
-            <h1>{props.match.role}</h1>
+            <div className="role">{props.match.role}</div>
+            <div className="champion">{props.match.champion}</div>
         </div>
     )
 }
