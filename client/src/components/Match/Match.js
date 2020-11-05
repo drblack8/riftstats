@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
+import './Match.css'
 
 const Match = (props) => {
-    let championByIdCache = {};
+
+  console.log(props);
+
+  let championByIdCache = {};
   let championJson = {};
 
   async function getLatestChampionDDragon(language = "en_US") {
@@ -49,8 +53,8 @@ const Match = (props) => {
     return await getLatestChampionDDragon(language)[name];
   }
     return (
-        <div>
-            <h1>match</h1>
+        <div className='solo-match'>
+            <h1>{props.match.role}</h1>
         </div>
     )
 }
