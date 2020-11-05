@@ -1,25 +1,24 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import './SearchBar.css'
 
 const SearchBar = () => {
     const [input, setInput] = useState('')
-    const [url, setUrl] = useState('')
-
+    const history = useHistory()
     const handleInput = (e) => {
         setInput(e.target.value)
     }
 
-    const handleSubmit = () => {
-        console.log(input);
-        setUrl(`/${input}`)
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        history.push(`/summoner/userName=${input}`)
     }
 
     return (
-        <div className='search-div'>
+        <form onSubmit={handleSubmit} className='search-div'>
             <input className='search-input' onChange={handleInput} value={input} placeholder="Find a Summoner..."></input>
-            <NavLink to={url.toLowerCase()} className='button-anchor'><i onClick={handleSubmit} className='fas fa-search'></i></NavLink>
-        </div>
+            <div onClick={handleSubmit} className='button-anchor'><i className='fas fa-search'></i></div>
+        </form>
     )
 }
 

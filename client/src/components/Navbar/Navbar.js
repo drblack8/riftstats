@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "../Button/Button";
 import { LoggedMenu } from "./LoggedMenu";
@@ -8,7 +8,9 @@ import "./Navbar.css";
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
   const [logged, setLogged] = useState(false);
+  const menu = useRef();
   const handleClick = () => {
+    menu.current.classList.toggle('active')
     clicked ? setClicked(false) : setClicked(true);
   };
 
@@ -21,7 +23,7 @@ const Navbar = () => {
         <div className="menu-icon" onClick={handleClick}>
           <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
         </div>
-        <ul className={clicked ? "nav-menu active" : "nav-menu"}>
+        <ul ref={menu} className="nav-menu hidden">
           {MenuItems.map((item, idx) => {
             return (
               <li key={idx}>
