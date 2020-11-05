@@ -3,38 +3,30 @@ import './Match.css'
 
 const Match = (props) => {
 
-  console.log(props);
-
+  const [champion, setChampion] = useState({})
   let championByIdCache = {};
   let championJson = {};
 
   async function getLatestChampionDDragon(language = "en_US") {
     if (championJson[language]) return championJson[language];
-
     let response;
     let versionIndex = 0;
     do {
-      // I loop over versions because 9.22.1 is broken
       const version = (
         await fetch(
           "http://ddragon.leagueoflegends.com/api/versions.json"
         ).then(async (r) => await r.json())
       )[versionIndex++];
-
       response = await fetch(
         `http://ddragon.leagueoflegends.com/cdn/${version}/data/${language}/champion.json`
       );
     } while (!response.ok);
-
     championJson[language] = await response.json();
     return championJson[language];
   }
-
   async function getChampionByKey(key, language = "en_US") {
-    // Setup cache
     if (!championByIdCache[language]) {
       let json = await getLatestChampionDDragon(language);
-
       championByIdCache[language] = {};
       for (var championName in json.data) {
         if (!json.data.hasOwnProperty(championName)) continue;
@@ -43,19 +35,22 @@ const Match = (props) => {
         championByIdCache[language][champInfo.key] = champInfo;
       }
     }
-
     return championByIdCache[language][key];
   }
+  getChampionByKey(props.match.champion).then(res => {
+    setChampion(res)
+  })
 
-  // NOTE: IN DDRAGON THE ID IS THE CLEAN NAME!!! It's also super-inconsistent, and broken at times.
-  // Cho'gath => Chogath, Wukong => Monkeyking, Fiddlesticks => Fiddlesticks/FiddleSticks (depending on what mood DDragon is in this patch)
+
+  console.log(champion);
   async function getChampionByID(name, language = "en_US") {
     return await getLatestChampionDDragon(language)[name];
   }
     return (
         <div className='solo-match'>
-            <div className="role">{props.match.role}</div>
-            <div className="champion">{props.match.champion}</div>
+            <div className="queue-type">{props.match.queue}</div>
+            <div className="role">{props.match.lane}</div>
+            <div className="champion">{champion.name}</div>
         </div>
     )
 }
