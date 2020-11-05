@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <div className="main">
         <Switch>
-          <Route component={Summoner} path="/summoner" />
+          <Route component={Summoner} path="/summoner/:input" />
           <Route component={Home} exact path="/" />
         </Switch>
       </div>
