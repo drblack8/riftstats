@@ -1,0 +1,8 @@
+.solo-match {
+    background: linear-gradient(90deg, rgb(160, 204, 220) 0%, rgb(185, 199, 247) 100%);
+    width: 25%;
+    height: 100px;
+    border: 1px solid rgba(28,110,164,0.58);
+    border-radius: 5px;
+    margin: 3px;
+}

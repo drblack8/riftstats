@@ -19,7 +19,6 @@ const Summoner = (props) => {
         (result) => {
           setMatches(result.matches);
           setIsLoaded(true);
-          console.log(matches);
         },
         (error) => {
           setError(error);
@@ -38,12 +37,12 @@ const Summoner = (props) => {
           <SearchBar />
         </div>
         <div className="sum-info">
-          <h1>{/* {summoner.name} */} wat</h1>
+          <h1>{/* {summoner.name} */}</h1>
         </div>
         <div className="sum-matches">
           <ul>
             {matches.map((match, idx) => {
-                return <li key={idx} ><Match props={match} /></li>
+                return <li key={idx} ><Match match={match} /></li>
             })}
             </ul>
         </div>
