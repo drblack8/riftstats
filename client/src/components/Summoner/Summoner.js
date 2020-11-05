@@ -1,16 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import './Summoner.css'
 import SearchBar from "../SearchBar/SearchBar";
+import { useParams } from 'react-router-dom';
 
-const Summoner = () => {
+const Summoner = (props) => {
+    const [error, setError] = useState(null);
     const [summoner, setSummoner] = useState(null)
-    const [url, setUrl] = useState(null)
+    const [isLoaded, setIsLoaded] = useState(false);
+    let { input } = useParams()
+    console.log(input);
     useEffect(() => {
-        setUrl(window.location.href.split('userName=')[1])
-        console.log(url);
-        const data = fetch(`/api/summoner/userName=${url}`)
-
-    }, [null])
+        fetch(`/api/summoner/${input}`)
+            .then((res) => res.json())
+            .then(
+            (result) => {
+                // setItems(result[0]);
+                setIsLoaded(true);
+            },
+            (error) => {
+                setError(error);
+                setIsLoaded(true);
+            }
+            );
+    }, [input])
+    if (error) {
+        return <div>Error: {error.message}</div>;
+      } else if (!isLoaded) {
+        return <div>Loading...</div>;
+      } else {
     return (
         <div className='sum-page'>
             <div className='sum-page-search'>
@@ -23,6 +40,7 @@ const Summoner = () => {
             </div>
         </div>
     )
+}
 }
 
 export default Summoner;

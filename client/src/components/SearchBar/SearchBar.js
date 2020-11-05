@@ -11,7 +11,8 @@ const SearchBar = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        history.push(`/summoner/userName=${input}`)
+        history.push(`/summoner/${input}`)
+        setInput('')
     }
 
     return (
