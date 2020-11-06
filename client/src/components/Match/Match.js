@@ -8,7 +8,20 @@ const Match = (props) => {
 
   let championByIdCache = {};
   let championJson = {};
-  // const determineRole = ()
+  const determineRole = (role, lane) => {
+    if (lane === "TOP") {
+      return 'Top'
+    } else if (lane === "JUNGLE"){
+      return 'Jungle'
+    } else if (lane === "MID") {
+      return 'Mid'
+    } else if (role === "DUO_CARRY") {
+      return 'ADC'
+    } else if (role === "DUO_SUPPORT") {
+      return 'Support'
+    }
+    return 'Fill'
+  }
 
   async function getLatestChampionDDragon(language = "en_US") {
     if (championJson[language]) return championJson[language];
@@ -50,7 +63,7 @@ const Match = (props) => {
     return (
         <div className='solo-match'>
             <div className="queue-type">{Queues(props.match.queue)}</div>
-            <div className="role">{props.match.lane}</div>
+            <div className="role">{determineRole(props.match.role, props.match.lane)}</div>
             <div className="champion">{champion.name}</div>
         </div>
     )
