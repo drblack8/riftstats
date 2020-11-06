@@ -41,10 +41,6 @@ const Match = (props) => {
     return championByIdCache[language][key];
   }
 
-  async function getChampionByID(name, language = "en_US") {
-    return await getLatestChampionDDragon(language)[name];
-  }
-
   useEffect(() => {
     getChampionByKey(props.match.champion).then(res => {
       setChampion(res)
