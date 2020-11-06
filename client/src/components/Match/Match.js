@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Match.css'
+import { Queues } from './Queues'
 
 const Match = (props) => {
 
   const [champion, setChampion] = useState({})
+
   let championByIdCache = {};
   let championJson = {};
+  // const determineRole = ()
 
   async function getLatestChampionDDragon(language = "en_US") {
     if (championJson[language]) return championJson[language];
@@ -37,18 +40,20 @@ const Match = (props) => {
     }
     return championByIdCache[language][key];
   }
-  getChampionByKey(props.match.champion).then(res => {
-    setChampion(res)
-  })
 
-
-  console.log(champion);
   async function getChampionByID(name, language = "en_US") {
     return await getLatestChampionDDragon(language)[name];
   }
+
+  useEffect(() => {
+    getChampionByKey(props.match.champion).then(res => {
+      setChampion(res)
+    })
+  }, [])
+
     return (
         <div className='solo-match'>
-            <div className="queue-type">{props.match.queue}</div>
+            <div className="queue-type">{Queues(props.match.queue)}</div>
             <div className="role">{props.match.lane}</div>
             <div className="champion">{champion.name}</div>
         </div>

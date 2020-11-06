@@ -1,9 +1,55 @@
-.sum-page-search {
-    position: relative;
-    margin-top: 40px;
+.sum-page {
+    margin-top: 12%;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 80%;
 }
 
 .sum-info {
-    margin-top: 60px;
-    margin-left: 40%;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    width: 45%;
+}
+
+.sum-page-search {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 1;
+    width: 55%
+}
+
+.sum-stats {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 2;
+    width: 25%;
+}
+
+.sum-matches {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 3;
+    width: 75%;
+}
+
+ul {
+    list-style-type: none;
 }
