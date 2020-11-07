@@ -13,7 +13,7 @@ def get_sum(username):
     account_url = f'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{username}?api_key={key}'
     account_id = requests.get(account_url).json()['accountId']
     print(account_id)
-    res_url = f'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/{account_id}?api_key={key}'
+    res_url = f'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/{account_id}?endIndex=20&api_key={key}'
     response = requests.get(res_url)
     return response.json()
 
