@@ -1,40 +1,50 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Match.css'
+import { Queues } from './Queues'
 
 const Match = (props) => {
-
-  console.log(props);
-
+  const [error, setError] = useState(null);
+  const [champion, setChampion] = useState({})
+  const [matchDetails, setMatchDetails] = useState({})
+  const [isLoaded, setIsLoaded] = useState(false);
+  const matchId = props.match.gameId
   let championByIdCache = {};
   let championJson = {};
+  const determineRole = (role, lane) => {
+    if (lane === "TOP") {
+      return 'Top'
+    } else if (lane === "JUNGLE"){
+      return 'Jungle'
+    } else if (lane === "MID") {
+      return 'Mid'
+    } else if (role === "DUO_CARRY") {
+      return 'ADC'
+    } else if (role === "DUO_SUPPORT") {
+      return 'Support'
+    }
+    return 'Fill'
+  }
 
   async function getLatestChampionDDragon(language = "en_US") {
     if (championJson[language]) return championJson[language];
-
     let response;
     let versionIndex = 0;
     do {
-      // I loop over versions because 9.22.1 is broken
       const version = (
         await fetch(
           "http://ddragon.leagueoflegends.com/api/versions.json"
         ).then(async (r) => await r.json())
       )[versionIndex++];
-
       response = await fetch(
         `http://ddragon.leagueoflegends.com/cdn/${version}/data/${language}/champion.json`
       );
     } while (!response.ok);
-
     championJson[language] = await response.json();
     return championJson[language];
   }
-
   async function getChampionByKey(key, language = "en_US") {
-    // Setup cache
     if (!championByIdCache[language]) {
       let json = await getLatestChampionDDragon(language);
-
       championByIdCache[language] = {};
       for (var championName in json.data) {
         if (!json.data.hasOwnProperty(championName)) continue;
@@ -43,19 +53,33 @@ const Match = (props) => {
         championByIdCache[language][champInfo.key] = champInfo;
       }
     }
-
     return championByIdCache[language][key];
   }
 
-  // NOTE: IN DDRAGON THE ID IS THE CLEAN NAME!!! It's also super-inconsistent, and broken at times.
-  // Cho'gath => Chogath, Wukong => Monkeyking, Fiddlesticks => Fiddlesticks/FiddleSticks (depending on what mood DDragon is in this patch)
-  async function getChampionByID(name, language = "en_US") {
-    return await getLatestChampionDDragon(language)[name];
-  }
+  useEffect(() => {
+    setIsLoaded(false);
+    fetch(`/api/summoner/match/${matchId}`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setMatchDetails(result);
+          setIsLoaded(true);
+        },
+        (error) => {
+          setError(error);
+          setIsLoaded(true);
+        }
+      );
+    getChampionByKey(props.match.champion).then(res => {
+      setChampion(res)
+    })
+  }, [matchId])
+
     return (
         <div className='solo-match'>
-            <div className="role">{props.match.role}</div>
-            <div className="champion">{props.match.champion}</div>
+            <div className="queue-type">{Queues(props.match.queue)}</div>
+            <div className="role">{determineRole(props.match.role, props.match.lane)}</div>
+            <div className="champion">{champion.name}</div>
         </div>
     )
 }

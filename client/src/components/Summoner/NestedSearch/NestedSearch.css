@@ -1,0 +1,36 @@
+.nested-search-div {
+    width: 60%;
+    background: #ffffff;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+  }
+
+.nested-search-input {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: rgb(31, 28, 28);
+    font-size: 16px;
+    transition: nested-4s;
+    line-height: 21px;
+    width: 400px;
+    padding-left: 5%;
+}
+
+.nested-button-anchor {
+    position: relative;
+    /* right: 400px; */
+    color: black;
+    height: 21px;
+    border-radius: 50%;
+    /* background: #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* float: right; */
+    left: 12px;
+}
