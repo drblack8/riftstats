@@ -13,7 +13,7 @@ const Summoner = (props) => {
 
   useEffect(() => {
     setIsLoaded(false);
-    fetch(`/api/summoner/${input}`)
+    fetch(`/api/summoner/info/${input}`)
       .then((res) => res.json())
       .then(
         (result) => {

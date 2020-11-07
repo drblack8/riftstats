@@ -3,9 +3,11 @@ import './Match.css'
 import { Queues } from './Queues'
 
 const Match = (props) => {
-
+  const [error, setError] = useState(null);
   const [champion, setChampion] = useState({})
-
+  const [matchDetails, setMatchDetails] = useState({})
+  const [isLoaded, setIsLoaded] = useState(false);
+  const matchId = props.match.gameId
   let championByIdCache = {};
   let championJson = {};
   const determineRole = (role, lane) => {
@@ -55,10 +57,23 @@ const Match = (props) => {
   }
 
   useEffect(() => {
+    setIsLoaded(false);
+    fetch(`/api/summoner/match/${matchId}`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setMatchDetails(result);
+          setIsLoaded(true);
+        },
+        (error) => {
+          setError(error);
+          setIsLoaded(true);
+        }
+      );
     getChampionByKey(props.match.champion).then(res => {
       setChampion(res)
     })
-  }, [])
+  }, [matchId])
 
     return (
         <div className='solo-match'>
