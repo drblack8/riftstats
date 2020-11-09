@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, session
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
-# from flask_migrate import Migrate
+from flask_migrate import Migrate
 # from flask_login import (
 #     LoginManager,
 #     current_user,
@@ -11,8 +11,9 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 #     login_required
 # )
 
-# from starter_app.models import db
+from starter_app.models import db
 from starter_app.api.summoner_routes import summoner_routes
+from starter_app.api.match_routes import match_routes
 
 from starter_app.config import Config
 
@@ -20,16 +21,16 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 app.register_blueprint(summoner_routes, url_prefix='/api/summoner')
+app.register_blueprint(match_routes, url_prefix='/api/match')
 
 
-# db.init_app(app)
-# Migrate(app, db)
+db.init_app(app)
+Migrate(app, db)
 
 # login_manager = LoginManager(app)
 
 # Application Security
 CORS(app)
-
 
 
 # @login_manager.user_loader
