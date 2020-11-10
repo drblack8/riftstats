@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects.postgresql import JSON
+
 db = SQLAlchemy()
 
 
@@ -14,9 +14,9 @@ class Match(db.Model):
     queueId = db.Column(db.Integer, nullable=False)
     seasonId = db.Column(db.Integer, nullable=False)
     gameMode = db.Column(db.String(40), nullable=False)
-    teams = db.Column(db.JSON, nullable=False)
-    participants = db.Column(db.JSON, nullable=False)
-    participantIdentities = db.Column(db.JSON, nullable=False)
+    teams = db.Column(db.Text, nullable=False)
+    participants = db.Column(db.Text, nullable=False)
+    participantIdentities = db.Column(db.Text, nullable=False)
 
 # class Summoner(db.Model):
 #     __tablename__ = 'summoners'

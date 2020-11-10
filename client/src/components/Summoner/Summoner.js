@@ -27,6 +27,23 @@ const Summoner = (props) => {
         }
       );
   }, [summoner, input]);
+
+  const handleUpdate = () => {
+    setIsLoaded(false);
+    fetch(`/api/match/post/${input}`, )
+      .then((res) => res.json())
+      .then(
+          (result) => {
+            console.log(result);
+            setIsLoaded(true)
+        },
+        (error) => {
+          setError(error);
+          setIsLoaded(true);
+        }
+      );
+  }
+
   if (error) {
     console.log("Error: ", error.message);
     return (
@@ -47,6 +64,7 @@ const Summoner = (props) => {
         </div>
         <div className="sum-info">
           <h1>{summoner}</h1>
+          <button onClick={handleUpdate}>Update</button>
         </div>
         <div className="sum-stats">
             <h1>stats will go here</h1>
