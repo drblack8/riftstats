@@ -38,12 +38,15 @@ def update_matches(summoner):
         print('===============: ', type(teams), teams)
         part = json.dumps(response.json()['participants'])
         pi = json.dumps(response.json()['participantIdentities'])
-        new_match = Match(gameId=game_id,
-                          platformId=platform_id, gameCreation=game_creation,
-                          gameDuration=game_duration,
-                          queueId=queue_id, seasonId=season_id,
-                          gameMode=game_mode, teams=teams, participants=part,
-                          participantIdentities=pi)
-        db.session.add(new_match)
-        db.session.commit()
+        try:
+            new_match = Match(gameId=game_id,
+                            platformId=platform_id, gameCreation=game_creation,
+                            gameDuration=game_duration,
+                            queueId=queue_id, seasonId=season_id,
+                            gameMode=game_mode, teams=teams, participants=part,
+                            participantIdentities=pi)
+            db.session.add(new_match)
+            db.session.commit()
+        except:
+            continue
     return 'Data Stored'

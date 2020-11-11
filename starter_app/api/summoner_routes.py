@@ -31,6 +31,6 @@ def get_sum(username):
 @summoner_routes.route('/match/<matchIds>')
 def get_match(matchIds):
     key = os.environ.get('RIOT_API_KEY')
-    match_url = f'{base_url}/match/v4/matches/{matchId}?api_key={key}'
+    match_url = f'{base_url}/match/v4/matches/{matchIds}?api_key={key}'
     response = requests.get(match_url)
     return response.json()

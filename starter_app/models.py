@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
+from sqlalchemy.dialects.mysql import BIGINT
 db = SQLAlchemy()
 
 
@@ -7,10 +7,10 @@ class Match(db.Model):
     __tablename__ = 'matches'
 
     id = db.Column(db.Integer, primary_key=True)
-    gameId = db.Column(db.Integer, nullable=False, unique=True)
+    gameId = db.Column(db.BIGINT, nullable=False, unique=True)
     platformId = db.Column(db.String(40), nullable=False)
-    gameCreation = db.Column(db.Integer, nullable=False)
-    gameDuration = db.Column(db.Integer, nullable=False)
+    gameCreation = db.Column(db.BIGINT, nullable=False)
+    gameDuration = db.Column(db.BIGINT, nullable=False)
     queueId = db.Column(db.Integer, nullable=False)
     seasonId = db.Column(db.Integer, nullable=False)
     gameMode = db.Column(db.String(40), nullable=False)
