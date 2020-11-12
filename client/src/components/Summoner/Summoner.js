@@ -3,6 +3,7 @@ import "./Summoner.css";
 import { useParams } from "react-router-dom";
 import Match from "../Match/Match";
 import NestedSearch from "./NestedSearch/NestedSearch";
+import { Button } from "../Button/Button";
 
 const Summoner = (props) => {
   const [error, setError] = useState(null);
@@ -12,12 +13,11 @@ const Summoner = (props) => {
   let { input } = useParams();
 
   useEffect(() => {
-    setIsLoaded(false);
     fetch(`/api/summoner/info/${input}`)
       .then((res) => res.json())
       .then(
         (result) => {
-          setMatches(result.matches);
+          setMatches(result);
           setSummoner(input);
           setIsLoaded(true);
         },
@@ -64,7 +64,7 @@ const Summoner = (props) => {
         </div>
         <div className="sum-info">
           <h1>{summoner}</h1>
-          <button onClick={handleUpdate}>Update</button>
+          <Button onClick={handleUpdate}>Update</Button>
         </div>
         <div className="sum-stats">
             <h1>stats will go here</h1>
@@ -74,7 +74,7 @@ const Summoner = (props) => {
             {matches.map((match, idx) => {
               return (
                 <li key={idx}>
-                  <Match match={match} />
+                  <Match match={match} summoner={summoner}/>
                 </li>
               );
             })}

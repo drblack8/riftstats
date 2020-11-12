@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.mysql import BIGINT
+import json
+from io import StringIO
 db = SQLAlchemy()
 
 
@@ -17,6 +19,22 @@ class Match(db.Model):
     teams = db.Column(db.Text, nullable=False)
     participants = db.Column(db.Text, nullable=False)
     participantIdentities = db.Column(db.Text, nullable=False)
+
+    def to_dict(self):
+        return {
+            "gameId": self.gameId,
+            "platformId": self.platformId,
+            "gameCreation": self.gameCreation,
+            "gameDuration": self.gameDuration,
+            "queueId": self.queueId,
+            "seasonId": self.seasonId,
+            "gameMode": self.gameMode,
+            "teams": json.load(StringIO(self.teams)),
+            "participants": json.load(StringIO(self.participants)),
+            "participantIdentities": json.load(
+                StringIO(self.participantIdentities)),
+        }
+
 
 # class Summoner(db.Model):
 #     __tablename__ = 'summoners'

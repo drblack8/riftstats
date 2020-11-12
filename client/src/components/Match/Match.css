@@ -6,3 +6,12 @@
     border-radius: 5px;
     margin: 3px;
 }
+
+.solo-match-lost {
+    background: linear-gradient(90deg, rgb(255, 98, 98) 0%, rgb(58, 35, 35) 100%);
+    /* width: 40%; */
+    height: 100px;
+    border: 1px solid rgba(28,110,164,0.58);
+    border-radius: 5px;
+    margin: 3px;
+}
