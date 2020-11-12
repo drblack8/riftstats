@@ -13,6 +13,7 @@ const Summoner = (props) => {
   let { input } = useParams();
 
   useEffect(() => {
+    setIsLoaded(false)
     fetch(`/api/summoner/info/${input}`)
       .then((res) => res.json())
       .then(
