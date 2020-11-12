@@ -2,6 +2,7 @@ import os
 import json
 import requests
 from flask import Blueprint, jsonify
+from sqlalchemy.exc import SQLAlchemyError
 from starter_app.models import Match, db
 
 
@@ -48,11 +49,11 @@ def update_matches(summoner):
                               participantIdentities=pi)
             db.session.add(new_match)
             db.session.commit()
-        finally:
+        except SQLAlchemyError:
+            db.session.rollback()
+            print('Already there!')
             continue
-    try:
-        new_matches = Match.query.filter(Match.participantIdentities.like(f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
-        match_list = [match.to_dict() for match in new_matches]
-        return jsonify(match_list)
-    finally:
-        return new_matches.json()
+    new_matches = Match.query.filter(Match.participantIdentities.like(
+        f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
+    match_list = [match.to_dict() for match in new_matches]
+    return jsonify(match_list)

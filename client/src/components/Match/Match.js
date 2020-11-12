@@ -12,6 +12,13 @@ const Match = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
 
+  const winner = (res) => {
+    if (res === "Win") {
+      return 'VICTORY'
+    }
+    return 'DEFEAT'
+  }
+
   const getDuration = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time - minutes * 60;
@@ -122,13 +129,24 @@ const Match = (props) => {
       <div className={results.win === "Win" ? "solo-match" : "solo-match-lost"}>
         <div className="match-info">
           <div className="queue-type">
-            {Queues(props.match.queueId)} - {GetTime(props.match.gameCreation)}
+            {Queues(props.match.queueId)}
+          </div>
+          <div className="match-creation">
+          {GetTime(props.match.gameCreation)}
+          </div>
+          <div className={results.win === "Win" ? "victory" : "defeat"}>
+            {winner(results.win)}
           </div>
           <div className="duration">{getDuration(props.match.gameDuration)}</div>
         </div>
         <div className="player-info">
           <div className="role">{determineRole(results.role, results.lane)}</div>
           <img className="champion-img" alt="Avatar" src={ChampData(results.champion).imageUrl}/>
+        </div>
+        <div className="build-info">
+
+        </div>
+        <div className="teams">
 
         </div>
 
