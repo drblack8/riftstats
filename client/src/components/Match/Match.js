@@ -10,7 +10,7 @@ const Match = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   let championByIdCache = {};
   let championJson = {};
-
+  const matchTime = new Date(props.match.gameCreation).toLocaleString('en-US', { hour12: true })
   const determineRole = (role, lane) => {
     if (lane === "TOP") {
       return "Top";
@@ -102,7 +102,6 @@ const Match = (props) => {
         }
       }
     }
-    console.log(results);
     setTeam1(t1);
     setTeam2(t2);
     setIsLoaded(true);
@@ -116,7 +115,7 @@ const Match = (props) => {
   } else if (isLoaded) {
     return (
       <div className={results.win === "Win" ? "solo-match" : "solo-match-lost"}>
-        <div className="queue-type">{Queues(props.match.queueId)}</div>
+        <div className="queue-type">{Queues(props.match.queueId)} - {matchTime}</div>
         <div className="role">{determineRole(results.role, results.lane)}</div>
         <div className="champion">{results.champion}</div>
       </div>

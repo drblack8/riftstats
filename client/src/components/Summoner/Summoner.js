@@ -9,11 +9,11 @@ const Summoner = (props) => {
   const [error, setError] = useState(null);
   const [summoner, setSummoner] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
+  const [render, setRender] = useState(true)
   const [matches, setMatches] = useState([]);
   let { input } = useParams();
 
   useEffect(() => {
-    setIsLoaded(false)
     fetch(`/api/summoner/info/${input}`)
       .then((res) => res.json())
       .then(
@@ -23,24 +23,22 @@ const Summoner = (props) => {
           setIsLoaded(true);
         },
         (error) => {
-          setError(error);
+          setError({"first": error});
           setIsLoaded(true);
         }
       );
-  }, [summoner, input]);
+  }, []);
 
   const handleUpdate = () => {
-    setIsLoaded(false);
     fetch(`/api/match/post/${input}`, )
       .then((res) => res.json())
       .then(
           (result) => {
             console.log(result);
-            setIsLoaded(true)
+            setMatches(result)
         },
         (error) => {
-          setError(error);
-          setIsLoaded(true);
+          setError({'second': error});
         }
       );
   }
@@ -55,7 +53,7 @@ const Summoner = (props) => {
         <div className="no-sum">No results for {input}</div>
       </div>
     );
-  } else if (!isLoaded) {
+  } else if (!isLoaded || !render) {
     return <div>Loading...</div>;
   } else {
     return (

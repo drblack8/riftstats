@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from flask import Blueprint
+from flask import Blueprint, jsonify
 from starter_app.models import Match, db
 
 
@@ -35,18 +35,24 @@ def update_matches(summoner):
         season_id = response.json()['seasonId']
         game_mode = response.json()['gameMode']
         teams = json.dumps(response.json()['teams'])
-        print('===============: ', type(teams), teams)
         part = json.dumps(response.json()['participants'])
         pi = json.dumps(response.json()['participantIdentities'])
         try:
             new_match = Match(gameId=game_id,
-                            platformId=platform_id, gameCreation=game_creation,
-                            gameDuration=game_duration,
-                            queueId=queue_id, seasonId=season_id,
-                            gameMode=game_mode, teams=teams, participants=part,
-                            participantIdentities=pi)
+                              platformId=platform_id,
+                              gameCreation=game_creation,
+                              gameDuration=game_duration,
+                              queueId=queue_id, seasonId=season_id,
+                              gameMode=game_mode, teams=teams,
+                              participants=part,
+                              participantIdentities=pi)
             db.session.add(new_match)
             db.session.commit()
-        except:
+        finally:
             continue
-    return 'Data Stored'
+    try:
+        new_matches = Match.query.filter(Match.participantIdentities.like(f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
+        match_list = [match.to_dict() for match in new_matches]
+        return jsonify(match_list)
+    finally:
+        return new_matches.json()
