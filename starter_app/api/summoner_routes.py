@@ -16,11 +16,8 @@ def get_sum(username):
         f'{username}?api_key={key}'
     )
     summoner = requests.get(account_url)
-    try:
-        account_id = summoner.json()['accountId']
-        res = Match.query.filter(
-            Match.participantIdentities.like(f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
-        match_list = [match.to_dict() for match in res]
-        return jsonify(match_list)
-    finally:
-        return summoner.json()
+    account_id = summoner.json()['accountId']
+    res = Match.query.filter(
+        Match.participantIdentities.like(f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
+    match_list = [match.to_dict() for match in res]
+    return jsonify(match_list)
