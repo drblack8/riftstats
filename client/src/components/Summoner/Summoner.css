@@ -5,7 +5,6 @@
     grid-template-rows: repeat(32, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-
 }
 
 .sum-info {
@@ -30,4 +29,21 @@ ul {
 
 body {
     color: whitesmoke;
+}
+
+.issue-main {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.issue-message {
+    text-align: center;
+    grid-area: 4 / 5 / 5 / 7;
+}
+
+.issue-search {
+    grid-area: 6 / 5 / 7 / 7;
 }

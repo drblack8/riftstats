@@ -18,7 +18,7 @@ const NestedSearch = () => {
     return (
         <form onSubmit={handleSubmit} className='nested-search-div'>
             <input className='nested-search-input' onChange={handleInput} value={input} placeholder="Find a Summoner..."></input>
-            <div onClick={handleSubmit} className='nested-button-anchor'><i className='fas fa-search'></i></div>
+            <div onClick={handleSubmit} className='nested-button-anchor'><i className='fas fa-arrow-alt-circle-right'></i></div>
         </form>
     )
 }

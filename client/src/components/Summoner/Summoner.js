@@ -8,6 +8,7 @@ import { Button } from "../Button/Button";
 const Summoner = (props) => {
   const [error, setError] = useState(null);
   const [summoner, setSummoner] = useState("");
+  const [issue, setIssue] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false);
   const [render, setRender] = useState(true)
   const [matches, setMatches] = useState([]);
@@ -20,6 +21,10 @@ const Summoner = (props) => {
       .then(
         (result) => {
           console.log(result);
+          if (result === 'Summoner Not Found') {
+              setIssue(true)
+              setIsLoaded(true)
+          }
           setMatches(result.matchList);
           setSummoner(result.sumName);
           setIsLoaded(true);
@@ -57,7 +62,15 @@ const Summoner = (props) => {
     );
   } else if (!isLoaded) {
     return <div>Loading...</div>;
-  } else {
+  } else if (issue) {
+    return <div className="issue-main">
+      <div className="issue-message">
+      <p>Summoner: [{input.toUpperCase()}] Does Not Exist.</p>
+      <p>Please try searching again.</p>
+      </div>
+      <div className="issue-search"><NestedSearch /></div>
+      </div>
+  } else if (isLoaded) {
     return (
       <div className="sum-page">
         <div className="sum-page-search">

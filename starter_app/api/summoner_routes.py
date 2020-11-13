@@ -28,4 +28,4 @@ def get_sum(username):
             "sumName": summoner_name
         })
     except KeyError:
-        return {'Summoner Not Found'}
+        return jsonify('Summoner Not Found')
