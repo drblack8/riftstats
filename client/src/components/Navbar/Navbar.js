@@ -18,7 +18,7 @@ const Navbar = () => {
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
-          RiftStats<i className="fab fa-react"></i>
+          RiftStats
         </h1>
         <div className="menu-icon" onClick={handleClick}>
           <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
@@ -35,14 +35,13 @@ const Navbar = () => {
           })}
         </ul>
         <NavLink to='/login'><Button>Login</Button></NavLink>
-        <NavLink to='/signup'><Button>Sign Up</Button></NavLink>
       </nav>
     );
   } else {
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
-          RiftStats<i className="fab fa-react"></i>
+          RiftStats
         </h1>
         <div className="menu-icon" onClick={handleClick}>
           <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
@@ -58,7 +57,10 @@ const Navbar = () => {
             );
           })}
         </ul>
+        <div className="btn-container">
+        <div className="shine"></div>
         <NavLink to='/'><Button>Logout</Button></NavLink>
+        </div>
       </nav>
     );
   }

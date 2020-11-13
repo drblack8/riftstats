@@ -14,12 +14,14 @@ const Summoner = (props) => {
   let { input } = useParams();
 
   useEffect(() => {
+    setIsLoaded(false)
     fetch(`/api/summoner/info/${input}`)
       .then((res) => res.json())
       .then(
         (result) => {
-          setMatches(result);
-          setSummoner(input);
+          console.log(result);
+          setMatches(result.matchList);
+          setSummoner(result.sumName);
           setIsLoaded(true);
         },
         (error) => {
@@ -27,7 +29,7 @@ const Summoner = (props) => {
           setIsLoaded(true);
         }
       );
-  }, []);
+  }, [input]);
 
   const handleUpdate = () => {
     fetch(`/api/match/post/${input}`, )
@@ -53,7 +55,7 @@ const Summoner = (props) => {
         <div className="no-sum">No results for {input}</div>
       </div>
     );
-  } else if (!isLoaded || !render) {
+  } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
     return (

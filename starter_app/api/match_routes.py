@@ -54,6 +54,6 @@ def update_matches(summoner):
             print('Already there!')
             continue
     new_matches = Match.query.filter(Match.participantIdentities.like(
-        f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
+        f'%{account_id}%')).order_by(Match.gameCreation.desc()).limit(20).all()
     match_list = [match.to_dict() for match in new_matches]
     return jsonify(match_list)

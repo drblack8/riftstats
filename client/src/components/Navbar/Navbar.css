@@ -1,11 +1,14 @@
 .NavbarItems {
-    background: linear-gradient(90deg, rgb(53, 147, 181) 0%, rgb(185, 199, 247) 100%);
-    height: 80px;
+    background:  #292334;
+    height: 55px;
     display: flex;
-    box-shadow: 0 4px 2px -2px gray;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    z-index: 2;
 }
 
 .navbar-logo {
@@ -62,21 +65,23 @@
     }
 
     .nav-menu {
-        background: linear-gradient(90deg, rgb(53, 147, 181) 0%, rgb(185, 199, 247) 100%);
+        background:  #292334;
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding-bottom: 60px;
+        padding-bottom: 40px;
         position: absolute;
-        top: 80px;
-        left: -100%;
+        top: -1000%;
+        border-bottom: 1px solid gray;
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
         opacity: 0;
-        transition: left 0.5s ease, opacity 0.5s ease;
+        transition: top 0.5s ease, opacity 0.5s ease;
         z-index: 1;
     }
 
     .nav-menu.active {
-        left: 0;
+        top: 56px;
         opacity: 1;
         transition: all 0.5s ease;
 
@@ -123,7 +128,7 @@
         margin: .5rem auto;
         border-radius: 4px;
         width: 80%;
-        background: #4ad9e4;
+        background:#6568f4;
         text-decoration: none;
         color: #fff;
         font-size: 1.5rem;

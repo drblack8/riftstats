@@ -3,6 +3,7 @@ import "./Match.css";
 import { Queues } from "./Queues";
 import { ChampData } from "./ChampData";
 import { GetTime } from "./GetTime"
+import { Spells } from "./Spells";
 
 const Match = (props) => {
   const [error, setError] = useState(null);
@@ -56,6 +57,8 @@ const Match = (props) => {
             name: props.match["participantIdentities"][i].player.summonerName,
             win: props.match.teams[0].win,
             champion: props.match["participants"][i].championId,
+            spell1: props.match["participants"][i].spell1Id,
+            spell2: props.match["participants"][i].spell2Id,
             role: props.match["participants"][i].timeline.role,
             lane: props.match["participants"][i].timeline.lane,
             kda: `${props.match["participants"][i].stats.kills} / ${props.match["participants"][i].stats.deaths} / ${props.match["participants"][i].stats.assists}`,
@@ -89,10 +92,13 @@ const Match = (props) => {
             name: props.match["participantIdentities"][i].player.summonerName,
             win: props.match.teams[1].win,
             champion: props.match["participants"][i].championId,
+            spell1: props.match["participants"][i].spell1Id,
+            spell2: props.match["participants"][i].spell2Id,
             role: props.match["participants"][i].timeline.role,
             lane: props.match["participants"][i].timeline.lane,
             kda: `${props.match["participants"][i].stats.kills} / ${props.match["participants"][i].stats.deaths} / ${props.match["participants"][i].stats.assists}`,
           });
+          // console.log(Spells(results.spell1));
           t2.push({
             user: true,
             name: props.match["participantIdentities"][i].player.summonerName,
@@ -114,9 +120,11 @@ const Match = (props) => {
         }
       }
     }
+
     setTeam1(t1);
     setTeam2(t2);
     setIsLoaded(true);
+
   }, [isLoaded]);
 
   if (error && !isLoaded) {
@@ -139,10 +147,22 @@ const Match = (props) => {
           </div>
           <div className="duration">{getDuration(props.match.gameDuration)}</div>
         </div>
+        <div className="divider"></div>
         <div className="player-info">
-          <div className="role">{determineRole(results.role, results.lane)}</div>
+          {/* <div className="role">{determineRole(results.role, results.lane)}</div> */}
           <img className="champion-img" alt="Avatar" src={ChampData(results.champion).imageUrl}/>
+          <div className="spells">
+            <img className="spell-1" alt="Spell" src={Spells(results.spell1)}/>
+            <img className="spell-2" alt="Spell" src={Spells(results.spell2)}/>
+          </div>
+          <div className='player-stats'>
+            {results.kda}
+          </div>
+          <div className='player-level'>
+            {results.kda}
+          </div>
         </div>
+        <div className="divider"></div>
         <div className="build-info">
 
         </div>
