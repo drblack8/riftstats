@@ -10,7 +10,7 @@
     height: 100px;
     border: 1px solid rgba(128, 128, 128, 0.55);
     padding: 5px;
-
+    font-size: small;
     margin: 3px;
 }
 
@@ -23,6 +23,7 @@
     align-items: center;
     background: rgb(56, 36, 36);
     /* width: 40%; */
+    font-size: small;
     height: 100px;
     border: 1px solid rgba(128, 128, 128, 0.55);
     padding: 5px;
@@ -75,7 +76,7 @@
     height: 80px;
     margin-left: 12px;
     margin-right: 12px;
-    background-color: #2e2e2e;
+    background-color: #808080;
 }
 
 .spells {
@@ -100,9 +101,39 @@
 }
 
 .player-stats {
+    text-align: center;
     grid-area: 2 / 5 / 4 / 8;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 .player-level {
     grid-area: 2 / 8 / 4 / 11;
+}
+
+.kda-math {
+
+}
+.kda-math-text {
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.kda-blue {
+    color: rgb(109, 141, 222);
+    font-weight: bold;
+}
+
+.kda-red {
+    color: rgb(230, 93, 93);
+    font-weight: bold;
+}
+
+.kda-white {
+    color: rgb(198, 198, 198);
+    font-weight: bold;
 }

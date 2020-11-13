@@ -70,6 +70,21 @@ const Summoner = (props) => {
       </div>
       <div className="issue-search"><NestedSearch /></div>
       </div>
+  } else if (isLoaded && matches.length === 0) {
+    return (
+      <div className="sum-page">
+        <div className="sum-page-search">
+          <NestedSearch />
+        </div>
+        <div className="sum-info">
+          <h1>{summoner}</h1>
+          <Button onClick={handleUpdate}>Update</Button>
+        </div>
+        <div className="no-matches">
+          Our database has not cached any matches for you, please Update!
+        </div>
+      </div>
+    );
   } else if (isLoaded) {
     return (
       <div className="sum-page">
