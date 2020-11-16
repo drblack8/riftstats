@@ -21,11 +21,11 @@
 }
 
 .sum-stats {
-    grid-area: 6 / 3 / 19 / 5;
+    grid-area: 6 / 3 / 19 / 4;
 }
 
 .sum-matches {
-    grid-area: 6 / 5 / 33 / 8;
+    grid-area: 6 / 4 / 33 / 8;
 }
 
 ul {

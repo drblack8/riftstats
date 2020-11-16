@@ -63,13 +63,80 @@
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px 5px;
+    grid-template-areas:
+      ". . . ."
+      "item1 item2 item3 ."
+      "item1 item2 item3 ward"
+      "item4 item5 item6 ward"
+      "item4 item5 item6 ."
+      ". . . .";
 }
 
+.item1 { 
+    grid-area: item1;
+ }
+.item2 { 
+    grid-area: item2;
+ }
+.item3 { 
+    grid-area: item3;
+ }
+.ward { 
+    grid-area: ward;
+ }
+.item4 { 
+    grid-area: item4;
+ }
+.item5 { 
+    grid-area: item5;
+ }
+.item6 { 
+    grid-area: item6;
+ }
+
+ .item1, .item2, .item3, .item4, .item5, .item6, .ward {
+     border-radius: 20%;
+     width: 22px;
+     height: 22px;
+ }
+
 .teams {
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
+
+    width: 200px;
+    height: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
+
+.team-imgs {
+    width: 11px;
+    height: 11px;
+    border: 1px solid #0D3656;
+    border-radius: 50%;
+}
+
+
+.team-text {
+    font-size: x-small;
+}
+
+.li1-0 { grid-area: 1 / 1 / 2 / 3; }
+.li1-1 { grid-area: 2 / 1 / 3 / 3; }
+.li1-2 { grid-area: 3 / 1 / 4 / 3; }
+.li1-3 { grid-area: 4 / 1 / 5 / 3; }
+.li1-4 { grid-area: 5 / 1 / 6 / 3; }
+.li2-0 { grid-area: 1 / 3 / 2 / 5; }
+.li2-1 { grid-area: 2 / 3 / 3 / 5; }
+.li2-2 { grid-area: 3 / 3 / 4 / 5; }
+.li2-3 { grid-area: 4 / 3 / 5 / 5; }
+.li2-4 { grid-area: 5 / 3 / 6 / 5; }
 
 .divider {
     width: 1px;
@@ -80,7 +147,7 @@
 }
 
 .spells {
-
+    margin-left: 7px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -93,11 +160,42 @@
 .spell-2, .spell-1 {
     width: 30px;
     padding: 3px;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .player-runes {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
     grid-area: 2 / 4 / 4 / 5;
+}
+
+
+.rune-keystone-img {
+    width: 35px;
+}
+
+.rune-tree, .rune-keystone {
+    background-color: rgba(0, 0, 0, 0.678);
+    border-radius: 50%;
+    padding: 2px;
+    display: flex;
+    margin-left: 9px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.rune-keystone {
+    margin-bottom: 7px;
+}
+.rune-tree-img {
+    width: 20px;
 }
 
 .player-stats {
@@ -113,6 +211,12 @@
 
 .player-level {
     grid-area: 2 / 8 / 4 / 11;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 .kda-math {

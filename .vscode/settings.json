@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "/Users/dan/Documents/AppAcademy/w21/riftstats/.venv/bin/python3.8",
-    "python.linting.pylintEnabled": false,
-    "python.linting.pycodestyleEnabled": true,
-    "python.linting.enabled": true
-}
