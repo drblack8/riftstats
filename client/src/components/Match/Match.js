@@ -71,7 +71,8 @@ const Match = (props) => {
           ].player.summonerName.toLowerCase() == props.summoner.toLowerCase()
         ) {
           setResults({
-            name: props.match["participantIdentities"][i].player.summonerName,
+			name: props.match["participantIdentities"][i].player.summonerName,
+			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             win: props.match.teams[0].win,
             champion: props.match["participants"][i].championId,
             spell1: props.match["participants"][i].spell1Id,
@@ -116,7 +117,8 @@ const Match = (props) => {
           });
           t1.push({
             user: true,
-            name: props.match["participantIdentities"][i].player.summonerName,
+			name: props.match["participantIdentities"][i].player.summonerName,
+			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             champion: props.match["participants"][i].championId,
             team: 1,
             role: props.match["participants"][i].timeline.role,
@@ -125,7 +127,8 @@ const Match = (props) => {
           });
         } else {
           t1.push({
-            name: props.match["participantIdentities"][i].player.summonerName,
+			name: props.match["participantIdentities"][i].player.summonerName,
+			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             champion: props.match["participants"][i].championId,
             team: 1,
             role: props.match["participants"][i].timeline.role,
@@ -140,7 +143,8 @@ const Match = (props) => {
           ].player.summonerName.toLowerCase() == props.summoner.toLowerCase()
         ) {
           setResults({
-            name: props.match["participantIdentities"][i].player.summonerName,
+			name: props.match["participantIdentities"][i].player.summonerName,
+			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             win: props.match.teams[1].win,
             champion: props.match["participants"][i].championId,
             spell1: props.match["participants"][i].spell1Id,
@@ -186,7 +190,8 @@ const Match = (props) => {
           // console.log(Spells(results.spell1));
           t2.push({
             user: true,
-            name: props.match["participantIdentities"][i].player.summonerName,
+			name: props.match["participantIdentities"][i].player.summonerName,
+			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             champion: props.match["participants"][i].championId,
             team: 2,
             role: props.match["participants"][i].timeline.role,
@@ -195,7 +200,8 @@ const Match = (props) => {
           });
         } else {
           t2.push({
-            name: props.match["participantIdentities"][i].player.summonerName,
+			name: props.match["participantIdentities"][i].player.summonerName,
+			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             champion: props.match["participants"][i].championId,
             team: 2,
             role: props.match["participants"][i].timeline.role,
@@ -325,42 +331,34 @@ const Match = (props) => {
           <img className="ward" src={getItem(results.items.ward)} alt="Item" />
         </div>
         <div className="divider"></div>
-        <div className="teams">
-          <div className="team1">
-            <ul className="team-ul">
+		<div className="teams">
               {team1.map((el, idx) => {
                 return (
-                  <li key={idx} className={`li1-${idx}`}>
-                    <span>
-                      <img
-                        className="team-imgs"
+                  <div key={idx} className={`li1-${idx}`}>
+                      <div className={`img-${idx}`}>
+					  <img
+                        className={`team-imgs`}
                         src={ChampData(el.champion).imageUrl}
                       />
-                    </span>
-                    <span className="team-text"> {el.name}</span>
-                  </li>
+					  </div>
+					  {(el.name.length > 10) ? <div className={`name-${idx}`}> {el.short}</div> : <div className={`name-${idx}`}> {el.name}</div>}
+                  </div>
                 );
               })}
-            </ul>
-          </div>
-          <div className="team2">
-            <ul className="team-ul">
               {team2.map((el, idx) => {
                 return (
-                  <li key={idx} className={`li2-${idx}`}>
-                    <span>
-                      <img
-                        className="team-imgs"
-                        src={ChampData(el.champion).imageUrl}
-                      />
-                    </span>
-                    <span className="team-text"> {el.name}</span>
-                  </li>
-                );
+					<div key={idx} className={`li2-${idx}`}>
+						<div className={`img1-${idx}`}>
+						<img
+						  className={`team-imgs`}
+						  src={ChampData(el.champion).imageUrl}
+						/>
+						</div>
+						{(el.name.length > 10) ? <div className={`name1-${idx}`}> {el.short}</div> : <div className={`name1-${idx}`}> {el.name}</div>}
+					</div>
+				  );
               })}
-            </ul>
-          </div>
-        </div>
+		</div>
       </div>
     );
   }
