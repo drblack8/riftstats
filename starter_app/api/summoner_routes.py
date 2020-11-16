@@ -6,7 +6,7 @@ from starter_app.models import Match, db
 
 summoner_routes = Blueprint('summoner', __name__)
 base_url = 'https://na1.api.riotgames.com/lol'
-
+base_ranked_url = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner'
 
 @summoner_routes.route('/info/<username>')
 def get_sum(username):
@@ -15,8 +15,18 @@ def get_sum(username):
         f'{base_url}/summoner/v4/summoners/by-name/'
         f'{username}?api_key={key}'
     )
+    
     summoner = requests.get(account_url)
+    
     try:
+        enc_id = summoner.json()['id']
+        print(enc_id)
+        ranked_url = (
+            f'{base_ranked_url}/summoner/v4/summoners/by-name/'
+            f'{"Lc2bjaEYaWxPz7wDyn8h6nviasdXcaNm4V528DAGi3pErVN6H8"}?api_key={key}'
+        )
+        ranked_data = requests.get(ranked_url)
+        print(ranked_data.json())
         account_id = summoner.json()['accountId']
         summoner_name = summoner.json()['name']
         profile_icon = summoner.json()['profileIconId']
@@ -29,7 +39,8 @@ def get_sum(username):
             "token": account_id,
             "sumName": summoner_name,
             "profileIcon": profile_icon,
-            "summonerLevel": summoner_level
+            "summonerLevel": summoner_level,
+            "rankedInfo": ranked_data.json()
         })
     except KeyError:
         return jsonify('Summoner Not Found')

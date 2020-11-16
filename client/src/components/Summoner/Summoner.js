@@ -12,6 +12,7 @@ const Summoner = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [profileIcon, setProfileIcon] = useState(4803);
   const [summonerLevel, setSummonerLevel] = useState(30);
+  const [rankedData, setRankedData] = useState({});
   const [matches, setMatches] = useState([]);
   let { input } = useParams();
 
@@ -29,6 +30,7 @@ const Summoner = (props) => {
           setMatches(result.matchList);
           setSummoner(result.sumName);
           setProfileIcon(result.profileIcon);
+          setRankedData(result.rankedInfo)
           setSummonerLevel(result.summonerLevel);
           setIsLoaded(true);
         },
