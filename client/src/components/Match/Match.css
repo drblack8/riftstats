@@ -14,6 +14,34 @@
     margin: 3px;
 }
 
+.queue-type {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.duration {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.match-creation {
+    font-size: 10px;
+    font-weight: 700;
+    color: #bbbedb;
+}
+.victory {
+    color:#08a6ff;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.defeat {
+    margin-top: 10px;
+    color:#ff4e50;
+    font-size: 12px;
+    font-weight: 700;
+}
 .solo-match-lost {
     display: flex;
     flex-direction: row;
@@ -139,6 +167,7 @@
     padding-right: 4px;  
     grid-area: img-0; }
   .name-0 { 
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name-0; }
@@ -161,6 +190,7 @@
     padding-right: 4px;  
     grid-area: img-1; }
   .name-1 { 
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name-1; }
@@ -183,6 +213,7 @@
     padding-right: 4px;  
     grid-area: img-2; }
   .name-2 { 
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name-2; }
@@ -205,6 +236,7 @@
     padding-right: 4px;  
     grid-area: img-3; }
   .name-3 { 
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name-3; }
@@ -227,6 +259,7 @@
     padding-right: 4px;  
     grid-area: img-4; }
   .name-4 { 
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name-4; }
@@ -249,6 +282,7 @@
     padding-right: 4px;  
     grid-area: img1-0; }
   .name1-0 {
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name1-0; }
@@ -271,6 +305,7 @@
     padding-right: 4px;  
     grid-area: img1-1; }
   .name1-1 {
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name1-1; }
@@ -293,6 +328,7 @@
     padding-right: 4px;  
     grid-area: img1-2; }
   .name1-2 {
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name1-2; }
@@ -315,6 +351,7 @@
     padding-right: 4px;  
     grid-area: img1-3; }
   .name1-3 {
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name1-3; }
@@ -337,6 +374,7 @@
     padding-right: 4px;  
     grid-area: img1-4; }
   .name1-4 {
+    cursor: pointer;
     align-self: center;
     font-size: x-small;  
     grid-area: name1-4; }
@@ -427,27 +465,41 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    font-size: 12px;
+    font-weight: 700;
 }
 
-.kda-math {
-
+.farm, .level {
+    margin-bottom: 4px;
 }
+ 
+.cspm {
+    color: #bbbedb;
+}
+
+
 .kda-math-text {
     font-weight: bold;
     font-size: smaller;
+    color: #bbbedb;
 }
 
 .kda-blue {
-    color: rgb(109, 141, 222);
+    color: #08a6ff;
     font-weight: bold;
 }
 
 .kda-red {
-    color: rgb(230, 93, 93);
+    color: #ff4e50;
     font-weight: bold;
 }
 
 .kda-white {
-    color: rgb(198, 198, 198);
     font-weight: bold;
+}
+
+.score {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
 }

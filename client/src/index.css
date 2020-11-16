@@ -12,3 +12,7 @@ body {
     background: #1c1626;
     font-family: Helvetica Neue,Roboto,Arial,Sans-Serif;
 }
+
+.main {
+    min-width: 1900px;
+}

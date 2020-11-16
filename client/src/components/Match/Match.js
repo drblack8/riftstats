@@ -5,6 +5,7 @@ import { ChampData } from "./ChampData";
 import { GetTime } from "./GetTime";
 import { Spells } from "./Spells";
 import { Keystones } from "./Keystones";
+import { useHistory } from 'react-router-dom'
 
 const Match = (props) => {
   const [error, setError] = useState(null);
@@ -12,6 +13,8 @@ const Match = (props) => {
   const [team2, setTeam2] = useState(null);
   const [results, setResults] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const history = useHistory()
 
   const winner = (res) => {
     if (res === "Win") {
@@ -23,6 +26,9 @@ const Match = (props) => {
   const getDuration = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time - minutes * 60;
+    if (((`${seconds}`).length < 2)) {
+      return `${minutes}:0${seconds}`
+    }
     return `${minutes}:${seconds}`;
   };
 
@@ -48,6 +54,12 @@ const Match = (props) => {
     }
     return "Fill";
   };
+
+  const handleSubmit = (e) => {
+	e.preventDefault()
+	console.log(e.target)
+	history.push(`/summoner/${e.target.id}`)
+}
 
   useEffect(() => {
     setIsLoaded(false);
@@ -284,10 +296,10 @@ const Match = (props) => {
             </div>
           </div>
           <div className="player-level">
-            <div>Level {results.level}</div>
-            <div>
-              <span>{results.farm}</span>
-              <span> ({results.farmpm}) </span>
+            <div className="level">Level {results.level}</div>
+            <div className="farm">
+              <span className="cs">{results.farm}</span>
+              <span className="cspm"> ({results.farmpm}) </span>
               <span>CS</span>
             </div>
             <div>
@@ -334,14 +346,14 @@ const Match = (props) => {
 		<div className="teams">
               {team1.map((el, idx) => {
                 return (
-                  <div key={idx} className={`li1-${idx}`}>
+                  <div key={idx} className={`li1-${idx}`} id={el.name}>
                       <div className={`img-${idx}`}>
 					  <img
                         className={`team-imgs`}
                         src={ChampData(el.champion).imageUrl}
                       />
 					  </div>
-					  {(el.name.length > 10) ? <div className={`name-${idx}`}> {el.short}</div> : <div className={`name-${idx}`}> {el.name}</div>}
+					  {(el.name.length > 10) ? <div onClick={handleSubmit} id={el.name} className={`name-${idx}`}> {el.short}</div> : <div className={`name-${idx}`} id={el.name} onClick={handleSubmit}> {el.name}</div>}
                   </div>
                 );
               })}
@@ -354,7 +366,7 @@ const Match = (props) => {
 						  src={ChampData(el.champion).imageUrl}
 						/>
 						</div>
-						{(el.name.length > 10) ? <div className={`name1-${idx}`}> {el.short}</div> : <div className={`name1-${idx}`}> {el.name}</div>}
+						{(el.name.length > 10) ? <div onClick={handleSubmit} id={el.name} className={`name1-${idx}`}> {el.short}</div> : <div id={el.name} onClick={handleSubmit} className={`name1-${idx}`}> {el.name}</div>}
 					</div>
 				  );
               })}

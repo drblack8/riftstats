@@ -19,13 +19,17 @@ def get_sum(username):
     try:
         account_id = summoner.json()['accountId']
         summoner_name = summoner.json()['name']
+        profile_icon = summoner.json()['profileIconId']
+        summoner_level = summoner.json()['summonerLevel']
         res = Match.query.filter(
             Match.participantIdentities.like(f'%{account_id}%')).order_by(Match.gameCreation.desc()).limit(20).all()
         match_list = [match.to_dict() for match in res]
         return jsonify({
             "matchList": match_list,
             "token": account_id,
-            "sumName": summoner_name
+            "sumName": summoner_name,
+            "profileIcon": profile_icon,
+            "summonerLevel": summoner_level
         })
     except KeyError:
         return jsonify('Summoner Not Found')

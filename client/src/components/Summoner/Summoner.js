@@ -8,47 +8,50 @@ import { Button } from "../Button/Button";
 const Summoner = (props) => {
   const [error, setError] = useState(null);
   const [summoner, setSummoner] = useState("");
-  const [issue, setIssue] = useState(false)
+  const [issue, setIssue] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [render, setRender] = useState(true)
+  const [profileIcon, setProfileIcon] = useState(4803);
+  const [summonerLevel, setSummonerLevel] = useState(30);
   const [matches, setMatches] = useState([]);
   let { input } = useParams();
 
   useEffect(() => {
-    setIsLoaded(false)
+    setIsLoaded(false);
     fetch(`/api/summoner/info/${input}`)
       .then((res) => res.json())
       .then(
         (result) => {
           console.log(result);
-          if (result === 'Summoner Not Found') {
-              setIssue(true)
-              setIsLoaded(true)
+          if (result === "Summoner Not Found") {
+            setIssue(true);
+            setIsLoaded(true);
           }
           setMatches(result.matchList);
           setSummoner(result.sumName);
+          setProfileIcon(result.profileIcon);
+          setSummonerLevel(result.summonerLevel);
           setIsLoaded(true);
         },
         (error) => {
-          setError({"first": error});
+          setError({ first: error });
           setIsLoaded(true);
         }
       );
   }, [input]);
 
   const handleUpdate = () => {
-    fetch(`/api/match/post/${input}`, )
+    fetch(`/api/match/post/${input}`)
       .then((res) => res.json())
       .then(
-          (result) => {
-            console.log(result);
-            setMatches(result)
+        (result) => {
+          console.log(result);
+          setMatches(result);
         },
         (error) => {
-          setError({'second': error});
+          setError({ second: error });
         }
       );
-  }
+  };
 
   if (error) {
     console.log("Error: ", error.message);
@@ -63,18 +66,24 @@ const Summoner = (props) => {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else if (issue) {
-    return <div className="issue-main">
-      <div className="issue-message">
-      <p>Summoner: [{input.toUpperCase()}] Does Not Exist.</p>
-      <p>Please try searching again.</p>
+    return (
+      <div className="issue-main">
+        <div className="issue-message">
+          <p>Summoner: [{input.toUpperCase()}] Does Not Exist.</p>
+          <p>Please try searching again.</p>
+        </div>
+        <div className="issue-search">
+          <NestedSearch />
+        </div>
       </div>
-      <div className="issue-search"><NestedSearch /></div>
-      </div>
+    );
   } else if (isLoaded && matches.length === 0) {
     return (
       <div className="sum-page">
-        <div className="sum-page-search">
-          <NestedSearch />
+        <div className="sum-header">
+          <div className="sum-page-search">
+            <NestedSearch />
+          </div>
         </div>
         <div className="sum-info">
           <h1>{summoner}</h1>
@@ -88,22 +97,51 @@ const Summoner = (props) => {
   } else if (isLoaded) {
     return (
       <div className="sum-page">
-        <div className="sum-page-search">
-          <NestedSearch />
+        <div className="sum-header">
+          <div className="sum-search-title">Welcome to your Stats Page!</div>
+          <div className="sum-page-search">
+            <NestedSearch />
+          </div>
+          <div className="sum-matches-title">
+            <p className="title-text">
+              Below are your last 20 matches. Sort funtionality coming soon!
+            </p>
+          </div>
         </div>
         <div className="sum-info">
-          <h1>{summoner}</h1>
+          
+          <div className="sum-icon">
+          <td>
+            <div className="img-container">
+              <img
+                class="top-img"
+                src="https://i.imgur.com/phgH52r.png"
+                alt="Profile"
+              />
+              <img
+                class="bottom-img"
+                src={`https://raw.communitydragon.org/10.23/game/assets/ux/summonericons/profileicon${profileIcon}.png`}
+                alt="Profile"
+              />
+              <p className="sum-level">{summonerLevel}</p>
+            </div>
+            </td>
+          </div>
+         
+          <div className="sum-name">{summoner}</div>
+          <div className="update-btn">
           <Button onClick={handleUpdate}>Update</Button>
+            </div>
         </div>
         <div className="sum-stats">
-            <h1>stats will go here</h1>
+          <h1>stats will go here</h1>
         </div>
         <div className="sum-matches">
           <ul>
             {matches.map((match, idx) => {
               return (
                 <li key={idx}>
-                  <Match match={match} summoner={summoner}/>
+                  <Match match={match} summoner={summoner} />
                 </li>
               );
             })}
