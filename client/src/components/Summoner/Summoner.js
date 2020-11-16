@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Match from "../Match/Match";
 import NestedSearch from "./NestedSearch/NestedSearch";
 import { Button } from "../Button/Button";
+import Stats from "../Stats/Stats";
 
 const Summoner = (props) => {
   const [error, setError] = useState(null);
@@ -12,7 +13,7 @@ const Summoner = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [profileIcon, setProfileIcon] = useState(4803);
   const [summonerLevel, setSummonerLevel] = useState(30);
-  const [rankedData, setRankedData] = useState({});
+  const [rankedData, setRankedData] = useState([{},{}]);
   const [matches, setMatches] = useState([]);
   let { input } = useParams();
 
@@ -83,14 +84,36 @@ const Summoner = (props) => {
     return (
       <div className="sum-page">
         <div className="sum-header">
+          <div className="sum-search-title">Welcome to your Stats Page!</div>
           <div className="sum-page-search">
             <NestedSearch />
           </div>
+          <div className="sum-matches-title">
+            <p className="title-text">
+              Below are your last 20 matches. Sort funtionality coming soon!
+            </p>
+          </div>
         </div>
-        <div className="sum-info">
-          <h1>{summoner}</h1>
+
+          <div className="sum-icon">
+            <div className="img-container">
+              <img
+                className="top-img"
+                src="https://i.imgur.com/phgH52r.png"
+                alt="Profile"
+              />
+              <img
+                className="bottom-img"
+                src={`https://raw.communitydragon.org/10.23/game/assets/ux/summonericons/profileicon${profileIcon}.png`}
+                alt="Profile"
+              />
+              <p className="sum-level">{summonerLevel}</p>
+            </div>
+          </div>
+          <div className="sum-name">{summoner}</div>
+          <div className="update-btn">
           <Button onClick={handleUpdate}>Update</Button>
-        </div>
+            </div>
         <div className="no-matches">
           Our database has not cached any matches for you, please Update!
         </div>
@@ -110,33 +133,30 @@ const Summoner = (props) => {
             </p>
           </div>
         </div>
-        <div className="sum-info">
-          
+
+
           <div className="sum-icon">
-          <td>
             <div className="img-container">
               <img
-                class="top-img"
+                className="top-img"
                 src="https://i.imgur.com/phgH52r.png"
                 alt="Profile"
               />
               <img
-                class="bottom-img"
+                className="bottom-img"
                 src={`https://raw.communitydragon.org/10.23/game/assets/ux/summonericons/profileicon${profileIcon}.png`}
                 alt="Profile"
               />
               <p className="sum-level">{summonerLevel}</p>
             </div>
-            </td>
           </div>
-         
+
           <div className="sum-name">{summoner}</div>
           <div className="update-btn">
           <Button onClick={handleUpdate}>Update</Button>
-            </div>
-        </div>
+          </div>
         <div className="sum-stats">
-          <h1>stats will go here</h1>
+          <Stats ranked={rankedData}/>
         </div>
         <div className="sum-matches">
           <ul>

@@ -1,0 +1,158 @@
+.ranked-title {
+    border: 1px solid rgba(128, 128, 128, 0.55);
+    padding: 5px;
+    margin: 3px;
+    height: 50px;
+    text-align: center;
+    font-size: larger;
+    margin-bottom: -24px;
+    font-weight: 700;
+}
+
+.ranked-sum {
+    margin-top: 8px;
+}
+
+.soloq-rank {
+    border: 1px solid rgba(128, 128, 128, 0.55);
+    padding: 5px;
+    margin: 3px;
+    display: grid;
+    height: 125px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    align-items: center;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.ranked-badge { grid-area: 2 / 2 / 6 / 4; }
+.solo-title { grid-area: 2 / 4 / 3 / 7; }
+.ranked-tier { grid-area: 3 / 4 / 4 / 7; }
+.winrate { grid-area: 4 / 4 / 5 / 7; }
+.wins-losses { grid-area: 5 / 4 / 6 / 7; }
+
+.flex-rank {
+    border: 1px solid rgba(128, 128, 128, 0.55);
+    padding: 5px;
+    margin: 3px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(6, 1fr);
+    height: 125px;
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.flex-ranked-badge { grid-area: 2 / 2 / 6 / 4; }
+.flex-solo-title {
+    grid-area: 2 / 4 / 3 / 7;
+}
+.flex-ranked-tier { grid-area: 3 / 4 / 4 / 7; }
+.flex-winrate { grid-area: 4 / 4 / 5 / 7; }
+.flex-wins-losses { grid-area: 5 / 4 / 6 / 7; }
+
+.flex-ranked-badge, .ranked-badge {
+    width: 90px;
+    height: auto;
+    justify-self: center;
+}
+
+.chal {
+    color: rgb(254, 210, 103);
+}
+
+.plat {
+    color: rgb(125, 213, 163);
+}
+
+.gm {
+    color:#EB1347;
+}
+
+.master {
+    color: rgb(199, 109, 215);
+}
+
+.diamond {
+    color: rgb(92, 111, 197);
+}
+
+.gold {
+    color: rgb(214, 195, 126);
+}
+
+.silver {
+    color: rgb(208, 208, 208);
+}
+
+.bronze {
+    color: rgb(196, 140, 77)
+}
+
+.iron {
+    color: rgb(85, 83, 81)
+}
+
+.unranked {
+    color: rgb(165, 165, 165)
+}
+
+.titles {
+    font-weight: bold;
+    font-size: small;
+    color: #ffffff;
+}
+
+.tiers-div {
+
+}
+
+.actual-tier {
+    font-weight: 900;
+}
+
+.dash {
+    color: rgba(131, 131, 131, 0.502);
+    font-size: smaller;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.flex-league-points, .league-points {
+    font-weight: bold;
+    font-size: smaller;
+    color: #bbbedb;
+}
+
+.wins-losses, .flex-wins-losses {
+
+}
+
+.wins, .flex-wins {
+    font-weight: bold;
+    font-size: smaller;
+    color: #ffffff;
+}
+
+.losses, .flex-losses {
+    font-weight: bold;
+    font-size: x-small;
+    color: #858585;
+}
+
+.winrate, .flex-winrate {
+
+}
+
+.winrate-percent, .flex-winrate-percent {
+    font-weight: bold;
+    font-size: smaller;
+    color: #ffffff;
+}
+
+.total-games, .flex-total-games {
+    font-weight: bold;
+    font-size: x-small;
+    color: #858585;
+}

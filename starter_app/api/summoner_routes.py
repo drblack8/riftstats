@@ -6,7 +6,8 @@ from starter_app.models import Match, db
 
 summoner_routes = Blueprint('summoner', __name__)
 base_url = 'https://na1.api.riotgames.com/lol'
-base_ranked_url = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner'
+base_ranked_url = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/'
+
 
 @summoner_routes.route('/info/<username>')
 def get_sum(username):
@@ -15,18 +16,18 @@ def get_sum(username):
         f'{base_url}/summoner/v4/summoners/by-name/'
         f'{username}?api_key={key}'
     )
-    
+
     summoner = requests.get(account_url)
-    
+    print(summoner)
     try:
         enc_id = summoner.json()['id']
-        print(enc_id)
+
         ranked_url = (
-            f'{base_ranked_url}/summoner/v4/summoners/by-name/'
-            f'{"Lc2bjaEYaWxPz7wDyn8h6nviasdXcaNm4V528DAGi3pErVN6H8"}?api_key={key}'
+            f'{base_ranked_url}'
+            f'{enc_id}?api_key={key}'
         )
         ranked_data = requests.get(ranked_url)
-        print(ranked_data.json())
+        print('RANKED DATA: ', ranked_data)
         account_id = summoner.json()['accountId']
         summoner_name = summoner.json()['name']
         profile_icon = summoner.json()['profileIconId']

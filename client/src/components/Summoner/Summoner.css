@@ -1,114 +1,34 @@
 .sum-page {
   margin-top: 10px;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(31, 1fr);
-  gap: 4px 4px;
-  grid-template-areas:
-    ". . sum-info sum-info sum-header sum-header sum-header sum-header . ."
-    ". . sum-info sum-info sum-header sum-header sum-header sum-header . ."
-    ". . sum-info sum-info sum-header sum-header sum-header sum-header . ."
-    ". . sum-stats sum-stats sum-matches sum-matches sum-matches sum-matches . ."
-    ". . sum-stats sum-stats sum-matches sum-matches sum-matches sum-matches . ."
-    ". . sum-stats sum-stats sum-matches sum-matches sum-matches sum-matches . ."
-    ". . sum-stats sum-stats sum-matches sum-matches sum-matches sum-matches . ."
-    ". . sum-stats sum-stats sum-matches sum-matches sum-matches sum-matches . ."
-    ". . sum-stats sum-stats sum-matches sum-matches sum-matches sum-matches . ."
-    ". . sum-stats sum-stats sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . ."
-    ". . . . sum-matches sum-matches sum-matches sum-matches . .";
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(34, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
 .sum-stats {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(6, 1fr);
-  gap: 0px 0px;
-  grid-template-areas:
-    "ranked-title"
-    "soloq-rank"
-    "flex-rank"
-    "champions-title"
-    "."
-    ".";
-  grid-area: sum-stats;
+  grid-area: 7 / 5 / 35 / 8;
 }
 
-.ranked-title {
-  grid-area: ranked-title;
-}
-
-.soloq-rank {
-  grid-area: soloq-rank;
-}
-
-.flex-rank {
-  grid-area: flex-rank;
-}
-
-.champions-title {
-  grid-area: champions-title;
-}
 
 .sum-matches {
-  grid-area: sum-matches;
+  grid-area: 8 / 8 / 35 / 16;
 }
 
-.sum-info {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0px 0px;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas:
-    "sum-icon sum-name sum-name"
-    "sum-icon update-btn update-info";
-  grid-area: sum-info;
-}
 
 .sum-icon {
-  grid-area: sum-icon;
-  place-self: center;
+  grid-area: 1 / 5 / 5 / 7;
+  justify-content: center;
+  align-items: center;
 }
 
 .sum-name {
-    font-size: 30px;
-    margin-left: 5px;
-    justify-self: start;
-    margin-bottom: 5px;
-    padding-top: 10px;
-    align-self: end;
-    text-overflow: ellipsis;
-    font-weight: 700;
-    grid-area: sum-name;
+    grid-area: 1 / 7 / 3 / 10;
 }
 
 .update-btn {
-  grid-area: update-btn;
-  justify-self: start;
-  align-self: start;
-  margin-top: 5px;
-  margin-left: 5px;
+  grid-area: 3 / 7 / 5 / 10;
 }
 
 .update-info {
@@ -116,18 +36,16 @@
 }
 
 .sum-header {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0px 0px;
-  grid-template-areas:
-    "sum-search-title sum-search-title sum-page-search sum-page-search"
-    "sum-matches-title sum-matches-title sum-matches-title sum-matches-title";
-  grid-area: sum-header;
+
+    grid-area: 1 / 10 / 5 / 16;
+}
+
+.sum-sorting {
+
 }
 
 .sum-matches-title {
-  grid-area: sum-matches-title;
+  grid-area: 7 / 8 / 8 / 16;
   align-self: end;
   margin: 3px;
   display: inline-block;
@@ -140,16 +58,10 @@
 }
 
 .sum-page-search {
-    align-self: end;
-    justify-self: stretch;
-  grid-area: sum-page-search;
+
 }
 
 .sum-search-title {
-  grid-area: sum-search-title;
-  align-self: end;
-  justify-self: center;
-  padding-bottom: 6px;
   font-size: 25px;
   font-weight: 700;
 }
@@ -168,20 +80,16 @@ body {
 }
 
 .issue-main {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+
 }
 
 .issue-message {
-  text-align: center;
-  grid-area: 4 / 5 / 5 / 7;
+
+
 }
 
 .issue-search {
-  grid-area: 6 / 5 / 7 / 7;
+
 }
 
 .title-text {
@@ -190,27 +98,31 @@ body {
 
 .img-container {
     position: relative;
-    left: -10px;
-    top: -10px;
 }
 .img-container .top-img {
+
     text-align: center;
     position: absolute;
-    top: 0;
-    left: 0;
+    width: 128px;
+    top: 25px;
+    left: 40px;
     z-index: 1;
 }
 
+.top-img {box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.53);}
 .bottom-img {
-    width: 165px;
-    margin-left: 9px;
-    padding-top: 10px;
-    border-radius: 50%;
+  width: 115px;
+  margin-top: 33px;
+  margin-left: 48px;
+  border-radius: 50%;
 }
 
 .sum-level {
     position: absolute;
+    font-weight: bold;
+    font-size: small;
+    color: #bbbedb;
     bottom: -6px;
-    right: 70px;
+    right: 63px;
     z-index: 2;
 }
