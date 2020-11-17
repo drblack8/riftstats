@@ -1,34 +1,51 @@
 .sum-page {
   margin-top: 10px;
+  min-width: 1110px;
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
-  grid-template-columns: repeat(20, 1fr);
+  grid-template-columns: repeat(4, 0) .8fr .7fr 1.5fr .5fr 1.5fr 1fr;
   grid-template-rows: repeat(34, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
 
 .sum-stats {
-  grid-area: 7 / 5 / 35 / 8;
+  justify-self: end;
+  grid-area: 4 / 5 / 35 / 7;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
 }
 
 
 .sum-matches {
-  grid-area: 8 / 8 / 35 / 16;
+  grid-area: 5 / 7 / 35 / 11;
 }
 
 
 .sum-icon {
-  grid-area: 1 / 5 / 5 / 7;
+  grid-area: 1 / 5 / 3 / 6;
   justify-content: center;
   align-items: center;
 }
 
 .sum-name {
-    grid-area: 1 / 7 / 3 / 10;
+  align-self: end;
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: 900;
+  grid-area: 1 / 6 / 2 / 9;
 }
 
 .update-btn {
-  grid-area: 3 / 7 / 5 / 10;
+  font-size: smaller;
+  font-weight: 900;
+  grid-area: 2 / 6 / 3 / 9;
 }
 
 .update-info {
@@ -37,24 +54,23 @@
 
 .sum-header {
 
-    grid-area: 1 / 10 / 5 / 16;
+  grid-area: 1 / 9 / 3 / 11;
 }
 
 .sum-sorting {
-
+  grid-area: 3 / 5 / 4 / 16;
 }
 
 .sum-matches-title {
-  grid-area: 7 / 8 / 8 / 16;
-  align-self: end;
-  margin: 3px;
-  display: inline-block;
-  vertical-align: middle;
+  grid-area: 4 / 7 / 5 / 11;
+  border: 1px solid rgba(128, 128, 128, 0.55);
+  padding-top: 18.5px;
+  margin-left: 3px;
+  margin-bottom: 2px;
+  height: 67px;
   text-align: center;
-  background:  #1b1b1b6e;
-    height: 50px;
-    border: 1px solid rgba(128, 128, 128, 0.55);
-    padding: 5px;
+  font-size: smaller;
+  font-weight: 700;
 }
 
 .sum-page-search {
@@ -100,20 +116,17 @@ body {
     position: relative;
 }
 .img-container .top-img {
-
-    text-align: center;
     position: absolute;
     width: 128px;
-    top: 25px;
-    left: 40px;
+    left: 5px;
     z-index: 1;
 }
 
-.top-img {box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.53);}
 .bottom-img {
-  width: 115px;
-  margin-top: 33px;
-  margin-left: 48px;
+  width: 117px;
+
+  margin-top: 6px;
+  margin-left: 12px;
   border-radius: 50%;
 }
 
@@ -122,7 +135,7 @@ body {
     font-weight: bold;
     font-size: small;
     color: #bbbedb;
-    bottom: -6px;
-    right: 63px;
+    bottom: -6.5px;
+    left: 39.6%;
     z-index: 2;
 }

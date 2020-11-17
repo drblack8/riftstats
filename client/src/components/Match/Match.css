@@ -11,7 +11,9 @@
     border: 1px solid rgba(128, 128, 128, 0.55);
     padding: 5px;
     font-size: small;
-    margin: 3px;
+    margin-left: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .queue-type {
@@ -55,7 +57,9 @@
     height: 100px;
     border: 1px solid rgba(128, 128, 128, 0.55);
     padding: 5px;
-    margin: 3px;
+    margin-left: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .champion-img {
@@ -104,25 +108,25 @@
       ". . . .";
 }
 
-.item1 { 
+.item1 {
     grid-area: item1;
  }
-.item2 { 
+.item2 {
     grid-area: item2;
  }
-.item3 { 
+.item3 {
     grid-area: item3;
  }
-.ward { 
+.ward {
     grid-area: ward;
  }
-.item4 { 
+.item4 {
     grid-area: item4;
  }
-.item5 { 
+.item5 {
     grid-area: item5;
  }
-.item6 { 
+.item6 {
     grid-area: item6;
  }
 
@@ -160,16 +164,16 @@
       "img-0 name-0 name-0";
     grid-area: li1-0;
   }
-  .img-0 { 
+  .img-0 {
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img-0; }
-  .name-0 { 
+  .name-0 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name-0; }
   .li1-1 {
       height: 18px;
@@ -183,16 +187,16 @@
       "img-1 name-1 name-1";
     grid-area: li1-1;
   }
-  .img-1 { 
+  .img-1 {
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img-1; }
-  .name-1 { 
+  .name-1 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name-1; }
   .li1-2 {
       height: 18px;
@@ -206,16 +210,16 @@
       "img-2 name-2 name-2";
     grid-area: li1-2;
   }
-  .img-2 { 
+  .img-2 {
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img-2; }
-  .name-2 { 
+  .name-2 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name-2; }
   .li1-3 {
       height: 18px;
@@ -229,16 +233,16 @@
       "img-3 name-3 name-3";
     grid-area: li1-3;
   }
-  .img-3 { 
+  .img-3 {
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img-3; }
-  .name-3 { 
+  .name-3 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name-3; }
   .li1-4 {
       height: 18px;
@@ -252,16 +256,16 @@
       "img-4 name-4 name-4";
     grid-area: li1-4;
   }
-  .img-4 { 
+  .img-4 {
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img-4; }
-  .name-4 { 
+  .name-4 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name-4; }
   .li2-0 {
       height: 18px;
@@ -279,12 +283,12 @@
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img1-0; }
   .name1-0 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name1-0; }
   .li2-1 {
       height: 18px;
@@ -302,12 +306,12 @@
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img1-1; }
   .name1-1 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name1-1; }
   .li2-2 {
       height: 18px;
@@ -325,12 +329,12 @@
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img1-2; }
   .name1-2 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name1-2; }
   .li2-3 {
       height: 18px;
@@ -348,12 +352,12 @@
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img1-3; }
   .name1-3 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name1-3; }
   .li2-4 {
       height: 18px;
@@ -371,12 +375,12 @@
     height: 17px;
     justify-self: end;
     align-self: center;
-    padding-right: 4px;  
+    padding-right: 4px;
     grid-area: img1-4; }
   .name1-4 {
     cursor: pointer;
     align-self: center;
-    font-size: x-small;  
+    font-size: x-small;
     grid-area: name1-4; }
 
 .team-imgs {
@@ -472,7 +476,7 @@
 .farm, .level {
     margin-bottom: 4px;
 }
- 
+
 .cspm {
     color: #bbbedb;
 }

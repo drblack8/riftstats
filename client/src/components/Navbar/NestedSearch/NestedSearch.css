@@ -1,13 +1,17 @@
 .nested-search-div {
-
+    align-self: center;
     background: #ffffff;
-    height: 40px;
-    border-radius: 40px;
+    height: 35px;
+    border-radius: 4px;
     padding: 10px;
+    padding-bottom: 8px;
   }
 
 .nested-search-input {
+    position: relative;
     border: none;
+    width: 90%;
+    text-overflow: ellipsis;
     background: none;
     outline: none;
     float: left;
@@ -15,22 +19,16 @@
     color: rgb(31, 28, 28);
     font-size: 16px;
     transition: nested-4s;
-    line-height: 21px;
-    padding-left: 5%;
+    line-height: 15px;
 }
 
 .nested-button-anchor {
-    position: relative;
-    /* right: 400px; */
+    position: absolute;
+    right: 5px;
+    z-index: 1;
     color: black;
     height: 21px;
     border-radius: 50%;
-    /* background: #fff; */
     display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
-    float: right;
-
-
 }

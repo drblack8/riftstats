@@ -1,0 +1,35 @@
+.menu-search-div {
+    align-self: center;
+    background: #ffffff;
+    height: 35px;
+    border-radius: 4px;
+    padding: 10px;
+    padding-bottom: 8px;
+  }
+
+.menu-search-input {
+    position: relative;
+    border: none;
+    width: 90%;
+    text-overflow: ellipsis;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: rgb(31, 28, 28);
+    font-size: 16px;
+    transition: menu-4s;
+    line-height: 15px;
+}
+
+.menu-button-anchor {
+    position: absolute;
+    right: 35px;
+    z-index: 1;
+    color: black;
+    width: 20px;
+    height: 21px;
+    border-radius: 50%;
+    display: flex;
+    cursor: pointer;
+}

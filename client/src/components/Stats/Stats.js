@@ -34,7 +34,7 @@ const Stats = (props) => {
 			return word;
 		} else if (div === 'GRANDMASTER') {
 			return word;
-		} else if ((div === 'MASTER')) {
+		} else if (div === 'MASTER') {
 			return word;
 		} else if (div === 'DIAMOND') {
 			return word + ' ' + tier;
@@ -51,9 +51,9 @@ const Stats = (props) => {
 		} else {
 			return 'Unranked';
 		}
-    };
+	};
 
-    const getClassName = (div) => {
+	const getClassName = (div) => {
 		if (div === 'CHALLENGER') {
 			return 'chal';
 		} else if (div === 'GRANDMASTER') {
@@ -75,8 +75,7 @@ const Stats = (props) => {
 		} else {
 			return 'Unranked';
 		}
-    };
-
+	};
 
 	const winrate = (queue) => {
 		let percent = Math.floor(
@@ -94,40 +93,40 @@ const Stats = (props) => {
 			<div className="ranked-title">
 				<p className="ranked-sum">Ranked 2020 Season</p>
 			</div>
-			<div className="soloq-rank">
-				<img className="ranked-badge" src={getRankImg(props.ranked[0].tier)} />
-				<div className="solo-title titles">Ranked Solo</div>
-				<div className="ranked-tier tiers-div">
-					<span className={`current-rank-solo actual-tier ${getClassName(props.ranked[0].tier)}`}>{getRankTier(props.ranked[0].tier, props.ranked[0].rank)}</span>
-					<span className="dash"> / </span>
-                    <span className="league-points"> {props.ranked[0].leaguePoints} LP</span>
+			<div>
+				<div className="soloq-rank">
+					<img className="ranked-badge" src={getRankImg(props.ranked[0].tier)} />
+					<div className="solo-title titles">Ranked Solo</div>
+					<div className="ranked-tier tiers-div">
+						<span className={`current-rank-solo actual-tier ${getClassName(props.ranked[0].tier)}`}>
+							{getRankTier(props.ranked[0].tier, props.ranked[0].rank)}
+						</span>
+						<span className="dash"> / </span>
+						<span className="league-points"> {props.ranked[0].leaguePoints} LP</span>
+					</div>
+					<div className="winrate">
+						<span className="winrate-percent">{winrate(0)} WR</span>
+						<span className="dash"> / </span>
+						<span className="total-games"> {totalGames(0)} Games</span>
+					</div>
 				</div>
-				<div className="wins-losses">
-					<span className="wins">{props.ranked[0].wins} Wins</span>
-					<span className="losses"> {props.ranked[0].losses} Losses</span>
-				</div>
-				<div className="winrate">
-					<span className="winrate-percent">{winrate(0)}</span>
-					<span className="total-games"> {totalGames(0)} Games</span>
+				<div className="flex-rank">
+					<img className="flex-ranked-badge" src={getRankImg(props.ranked[1].tier)} />
+					<div className="flex-solo-title titles">Ranked Flex</div>
+					<div className="flex-ranked-tier tiers-div">
+						<span className={`flex-current-rank-solo actual-tier ${getClassName(props.ranked[1].tier)}`}>
+							{getRankTier(props.ranked[1].tier, props.ranked[1].rank)}
+						</span>
+						<span className="dash"> / </span>
+						<span className="flex-league-points"> {props.ranked[1].leaguePoints} LP</span>
+					</div>
+					<div className="flex-winrate">
+						<span className="flex-winrate-percent">{winrate(1)} WR</span>
+						<span className="dash"> / </span>
+						<span className="flex-total-games"> {totalGames(1)} Games</span>
+					</div>
 				</div>
 			</div>
-			<div className="flex-rank">
-            <img className="flex-ranked-badge" src={getRankImg(props.ranked[1].tier)} />
-				<div className="flex-solo-title titles">Ranked Flex</div>
-				<div className="flex-ranked-tier tiers-div">
-					<span className={`flex-current-rank-solo actual-tier ${getClassName(props.ranked[1].tier)}`}>{getRankTier(props.ranked[1].tier, props.ranked[1].rank)}</span>
-                    <span className="dash"> / </span>
-					<span className="flex-league-points"> {props.ranked[1].leaguePoints} LP</span>
-				</div>
-				<div className="flex-wins-losses">
-					<span className="flex-wins">{props.ranked[1].wins} Wins</span>
-					<span className="flex-losses"> {props.ranked[1].losses} Losses</span>
-				</div>
-				<div className="flex-winrate">
-					<span className="flex-winrate-percent">{winrate(1)}</span>
-					<span className="flex-total-games"> {totalGames(1)} Games</span>
-				</div>
-            </div>
 			<div className="champions-title"></div>
 		</>
 	);

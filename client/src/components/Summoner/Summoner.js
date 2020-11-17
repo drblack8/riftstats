@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Summoner.css";
 import { useParams } from "react-router-dom";
 import Match from "../Match/Match";
-import NestedSearch from "./NestedSearch/NestedSearch";
 import { Button } from "../Button/Button";
 import Stats from "../Stats/Stats";
 
@@ -61,7 +60,7 @@ const Summoner = (props) => {
     return (
       <div className="sum-page">
         <div className="sum-page-search">
-          <NestedSearch />
+
         </div>
         <div className="no-sum">No results for {input}</div>
       </div>
@@ -76,7 +75,7 @@ const Summoner = (props) => {
           <p>Please try searching again.</p>
         </div>
         <div className="issue-search">
-          <NestedSearch />
+
         </div>
       </div>
     );
@@ -86,15 +85,15 @@ const Summoner = (props) => {
         <div className="sum-header">
           <div className="sum-search-title">Welcome to your Stats Page!</div>
           <div className="sum-page-search">
-            <NestedSearch />
+
           </div>
+        </div>
+
           <div className="sum-matches-title">
             <p className="title-text">
               Below are your last 20 matches. Sort funtionality coming soon!
             </p>
           </div>
-        </div>
-
           <div className="sum-icon">
             <div className="img-container">
               <img
@@ -125,16 +124,16 @@ const Summoner = (props) => {
         <div className="sum-header">
           <div className="sum-search-title">Welcome to your Stats Page!</div>
           <div className="sum-page-search">
-            <NestedSearch />
+
           </div>
+        </div>
+
+
           <div className="sum-matches-title">
             <p className="title-text">
               Below are your last 20 matches. Sort funtionality coming soon!
             </p>
           </div>
-        </div>
-
-
           <div className="sum-icon">
             <div className="img-container">
               <img
