@@ -1,0 +1,32 @@
+.UpdButton {
+	box-shadow:inset 0px 1px 0px -1px #bbdaf7;
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color:#79bbff;
+	border-radius:6px;
+	width: 142px;
+	height: 37px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 45px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #528ecc;
+}
+.UpdButton:hover {
+	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	background-color:#378de5;
+}
+.UpdButton:active {
+	position:relative;
+	top:1px;
+}
+
+.UpdButton:disabled {
+	cursor: none;
+    pointer-events: none;
+	background:linear-gradient(to bottom, #3d4954 5%, #378de5 100%);
+}

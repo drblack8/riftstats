@@ -11,6 +11,7 @@
   grid-row-gap: 0px;
 }
 
+
 .sum-stats {
   justify-self: end;
   grid-area: 4 / 5 / 35 / 7;
@@ -53,12 +54,42 @@
 }
 
 .sum-header {
-
+  align-self: center;
+  text-align: center;
   grid-area: 1 / 9 / 3 / 11;
+}
+.sum-header p {
+  font-weight: 900;
+  font-size: 20px;
 }
 
 .sum-sorting {
   grid-area: 3 / 5 / 4 / 16;
+}
+.alert-sumpage {
+  margin-top: 50px;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-content: center;
+  align-items: center;
+  height: 700px;
+}
+.alert-name {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+.alert-message {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.alert-icon {
+  margin-bottom: 10px;
 }
 
 .sum-matches-title {
@@ -73,19 +104,12 @@
   font-weight: 700;
 }
 
-.sum-page-search {
-
-}
 
 .sum-search-title {
   font-size: 25px;
   font-weight: 700;
 }
 
-.no-matches {
-  text-align: center;
-  grid-area: 7 / 4 / 9 / 7;
-}
 
 ul {
   list-style-type: none;

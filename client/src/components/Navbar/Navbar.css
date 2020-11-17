@@ -3,8 +3,7 @@
     height: 55px;
     display: flex;
     border-bottom: 1px solid gray;
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
+
     justify-content: center;
     align-items: center;
     font-size: 1rem;
