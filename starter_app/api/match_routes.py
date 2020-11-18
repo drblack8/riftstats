@@ -21,7 +21,7 @@ def update_matches(summoner):
     account_id = summoner.json()['accountId']
     matches_url = (
         f'{base_url}/match/v4/matchlists/by-account/'
-        f'{account_id}?endIndex=20&api_key={key}'
+        f'{account_id}?endIndex=50&api_key={key}'
     )
     matches = requests.get(matches_url).json()['matches']
     for match in matches:
@@ -54,6 +54,6 @@ def update_matches(summoner):
             print('Already there!')
             continue
     new_matches = Match.query.filter(Match.participantIdentities.like(
-        f'%{account_id}%')).order_by(Match.gameCreation.desc()).limit(20).all()
+        f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
     match_list = [match.to_dict() for match in new_matches]
     return jsonify(match_list)

@@ -33,7 +33,7 @@ def get_sum(username):
         profile_icon = summoner.json()['profileIconId']
         summoner_level = summoner.json()['summonerLevel']
         res = Match.query.filter(
-            Match.participantIdentities.like(f'%{account_id}%')).order_by(Match.gameCreation.desc()).limit(20).all()
+            Match.participantIdentities.like(f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
         match_list = [match.to_dict() for match in res]
         return jsonify({
             "matchList": match_list,
