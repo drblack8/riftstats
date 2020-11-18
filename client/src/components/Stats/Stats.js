@@ -8,6 +8,7 @@ import './Stats.css';
 import FlexOnly from './FlexOnly';
 import SoloOnly from './SoloOnly';
 import Unranked from './Unranked';
+import ChampionStats from './ChampionStats';
 
 // key [ 3=unranked, 1=ranked both, 2=ranked solo, 4=ranked flex ]
 const Stats = (props) => {
@@ -83,7 +84,9 @@ const Stats = (props) => {
 						</div>
 					</div>
 				</div>
-				<div className="champions-title"></div>
+				<div className="champions-title">
+					<ChampionStats matches={}/>
+				</div>
 			</>
 		);
 	}
