@@ -123,7 +123,7 @@ const Summoner = (props) => {
 					<UpdButton disabled={buttonLoading} onClick={handleUpdate}>{buttonLoading ? <ScaleLoader height={15} color="#ffffff" /> : "Update"}</UpdButton>
 				</div>
 				<div className="sum-stats">
-					<Stats allMatches={matches} ranked={rankedData} />
+					<Stats allMatches={matches} summonerName={summoner} ranked={rankedData} />
 				</div>
 				<div className="sum-matches">
 					<ul>

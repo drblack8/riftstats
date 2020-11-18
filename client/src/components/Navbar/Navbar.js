@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "../Button/Button";
 import { LoggedMenu } from "./LoggedMenu";
 import { MenuItems } from "./MenuItems";
