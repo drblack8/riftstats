@@ -8,7 +8,6 @@ import { Keystones } from "./Keystones";
 import { useHistory } from 'react-router-dom'
 
 const Match = (props) => {
-  const [error, setError] = useState(null);
   const [team1, setTeam1] = useState(null);
   const [team2, setTeam2] = useState(null);
   const [results, setResults] = useState(null);
@@ -40,21 +39,6 @@ const Match = (props) => {
     }
   };
 
-  const determineRole = (role, lane) => {
-    if (lane === "TOP") {
-      return "Top";
-    } else if (lane === "JUNGLE") {
-      return "Jungle";
-    } else if (lane === "MIDDLE") {
-      return "Mid";
-    } else if (role === "DUO_CARRY") {
-      return "ADC";
-    } else if (role === "DUO_SUPPORT") {
-      return "Support";
-    }
-    return "Fill";
-  };
-
   const handleSubmit = (e) => {
 	e.preventDefault()
 	console.log(e.target)
@@ -80,7 +64,7 @@ const Match = (props) => {
         if (
           props.match["participantIdentities"][
             i
-          ].player.summonerName.toLowerCase() == props.summoner.toLowerCase()
+          ].player.summonerName.toLowerCase() === props.summoner.toLowerCase()
         ) {
           setResults({
 			name: props.match["participantIdentities"][i].player.summonerName,
@@ -152,7 +136,7 @@ const Match = (props) => {
         if (
           props.match["participantIdentities"][
             i
-          ].player.summonerName.toLowerCase() == props.summoner.toLowerCase()
+          ].player.summonerName.toLowerCase() === props.summoner.toLowerCase()
         ) {
           setResults({
 			name: props.match["participantIdentities"][i].player.summonerName,
@@ -199,7 +183,6 @@ const Match = (props) => {
                 props.match["participants"][i].stats.assists) /
               props.match["participants"][i].stats.deaths,
           });
-          // console.log(Spells(results.spell1));
           t2.push({
             user: true,
 			name: props.match["participantIdentities"][i].player.summonerName,
@@ -227,12 +210,9 @@ const Match = (props) => {
     setTeam1(t1);
     setTeam2(t2);
     setIsLoaded(true);
-  }, [isLoaded]);
+  }, [isLoaded, props]);
 
-  if (error && !isLoaded) {
-    console.log("Error: ", error.message);
-    return <div className="no-sum">No results</div>;
-  } else if (!isLoaded) {
+ if (!isLoaded) {
     return <div>Loading...</div>;
   } else if (isLoaded) {
     return (
@@ -251,7 +231,6 @@ const Match = (props) => {
         </div>
         <div className="divider"></div>
         <div className="player-info">
-          {/* <div className="role">{determineRole(results.role, results.lane)}</div> */}
           <img
             className="champion-img"
             alt="Avatar"
@@ -263,13 +242,13 @@ const Match = (props) => {
           </div>
           <div className="player-runes">
             <div className="rune-keystone">
-              <img
+              <img alt="Keystone"
                 className="rune-keystone-img"
                 src={Keystones(results.keystone)}
               />
             </div>
             <div className="rune-tree">
-              <img className="rune-tree-img" src={Keystones(results.tree)} />
+              <img alt="Rune-tree" className="rune-tree-img" src={Keystones(results.tree)} />
             </div>
           </div>
           <div className="player-stats">
@@ -348,7 +327,7 @@ const Match = (props) => {
                 return (
                   <div key={idx} className={`li1-${idx}`} id={el.name}>
                       <div className={`img-${idx}`}>
-					  <img
+					  <img alt="ChampAvi"
                         className={`team-imgs`}
                         src={ChampData(el.champion).imageUrl}
                       />
@@ -361,7 +340,7 @@ const Match = (props) => {
                 return (
 					<div key={idx} className={`li2-${idx}`}>
 						<div className={`img1-${idx}`}>
-						<img
+						<img alt="TinyAvi"
 						  className={`team-imgs`}
 						  src={ChampData(el.champion).imageUrl}
 						/>
