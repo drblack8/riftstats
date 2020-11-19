@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ScaleLoader from "react-spinners/ScaleLoader"
+import GridLoader from "react-spinners/GridLoader"
 import Match from '../Match/Match';
 import { UpdButton } from './UpdButton/UpdButton';
 import Stats from '../Stats/Stats';
@@ -14,12 +15,15 @@ const Summoner = (props) => {
 	const [isLoaded, setIsLoaded] = useState(false);
   	const [profileIcon, setProfileIcon] = useState(4803);
 	const [buttonLoading, setButtonLoading] = useState(false)
-	const [favChamp, setFavChamp] = useState({})
+	const [favChamp, setFavChamp] = useState('')
 	const [summonerLevel, setSummonerLevel] = useState(30);
 	const [rankedData, setRankedData] = useState([{}, {}]);
 	const [matches, setMatches] = useState([]);
 	let { input } = useParams();
 
+	const randomizer = () => {
+		return Math.floor(Math.random() * Math.floor(2));
+	}
 
 	useEffect(() => {
 		setIsLoaded(false);
@@ -27,18 +31,22 @@ const Summoner = (props) => {
 			.then((res) => res.json())
 			.then(
 				(result) => {
-					console.log(result);
 					if (result === 'Summoner Not Found') {
 						setIssue(true);
 						setIsLoaded(true);
 					}
+					try {
+						setFavChamp(`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${displayWinrates(result.matchList, result.sumName).favoriteChamp.id}_${randomizer()}.jpg`)
+					} catch (e) {
+						console.log(e);
+					} finally {
 					setMatches(result.matchList);
 					setSummoner(result.sumName);
-					setFavChamp(displayWinrates(result.matchList, result.sumName).favoriteChamp)
 					setProfileIcon(result.profileIcon);
 					setRankedData(result.rankedInfo);
 					setSummonerLevel(result.summonerLevel);
 					setIsLoaded(true);
+					}
 				},
 				(error) => {
 					setError({ first: error });
@@ -72,7 +80,7 @@ const Summoner = (props) => {
 			</div>
 		);
 	} else if (!isLoaded) {
-		return <div>Loading...</div>;
+		return <div className="loading"><GridLoader height={100} color="#ffffff"/></div>;
 	} else if (issue) {
 		return (
 			<div className="issue-main">
@@ -88,7 +96,7 @@ const Summoner = (props) => {
 			<div className="alert-sumpage">
 				<div className="alert-name">Welcome to RiftStats {summoner}!</div>
 				<div className="alert-icon">
-				<i class="fas fa-exclamation-triangle fa-10x"></i>
+				<i className="fas fa-exclamation-triangle fa-10x"></i>
 				</div>
 				<div className="alert-message">
 					<p>We found you but we need to get you in the system first</p>
@@ -101,7 +109,12 @@ const Summoner = (props) => {
 		);
 	} else if (isLoaded) {
 		return (
+			<>
 			<div className="sum-page">
+			<div className="sum-splash">
+				<div className="gradient"></div>
+				<img className="sum-splash-img" alt='' src={favChamp} />
+			</div>
 				<div className="sum-header">
 					<div className="sum-search-title">Welcome to your Stats Page!</div>
 					<div className="sum-page-search"></div>
@@ -141,6 +154,7 @@ const Summoner = (props) => {
 					</ul>
 				</div>
 			</div>
+			</>
 		);
 	}
 };

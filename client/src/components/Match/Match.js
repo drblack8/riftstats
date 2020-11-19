@@ -213,7 +213,7 @@ const Match = (props) => {
   }, [isLoaded, props]);
 
  if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <div></div>;
   } else if (isLoaded) {
     return (
       <div className={results.win === "Win" ? "solo-match" : "solo-match-lost"}>

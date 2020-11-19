@@ -6542,11 +6542,13 @@ export const ChampData = (key) => {
   if (obj) {
     return {
       name: obj.name,
+      id: obj.id,
       imageUrl: `http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/${obj.image.full}`,
     };
   } else {
     return {
       name: "Zyra",
+      id: "Zyra",
       imageUrl: `http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/Zyra.png`,
     };
   }

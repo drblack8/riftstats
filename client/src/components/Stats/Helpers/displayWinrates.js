@@ -52,7 +52,6 @@ export const displayWinrates = (matches, summoner) => {
     })
 
     const championArr = Object.entries(champion_winrates).sort((a,b) => b[1][0][2]-a[1][0][2])
-    console.log(championArr);
     return {
         'championArr': championArr,
         'winrateArr': win_loss,
