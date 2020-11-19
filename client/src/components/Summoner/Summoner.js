@@ -34,6 +34,8 @@ const Summoner = (props) => {
 					if (result === 'Summoner Not Found') {
 						setIssue(true);
 						setIsLoaded(true);
+					} else {
+						setIssue(false)
 					}
 					try {
 						setFavChamp(`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${displayWinrates(result.matchList, result.sumName).favoriteChamp.id}_${randomizer()}.jpg`)
@@ -53,7 +55,7 @@ const Summoner = (props) => {
 					setIsLoaded(true);
 				}
 			);
-	}, [input]);
+	}, [input, issue]);
 
 	const handleUpdate = () => {
     setButtonLoading(true)

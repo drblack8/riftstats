@@ -24,9 +24,11 @@
 
 .nested-button-anchor {
     position: absolute;
-    right: 5px;
+    right: 7px;
+    margin-top: -1px;
     z-index: 1;
     color: black;
+    font-size: 1.7rem;
     height: 21px;
     border-radius: 50%;
     display: flex;
