@@ -5,18 +5,21 @@ import Match from '../Match/Match';
 import { UpdButton } from './UpdButton/UpdButton';
 import Stats from '../Stats/Stats';
 import './Summoner.css';
+import { displayWinrates } from '../Stats/Helpers/displayWinrates';
 
 const Summoner = (props) => {
 	const [error, setError] = useState(null);
 	const [summoner, setSummoner] = useState('');
 	const [issue, setIssue] = useState(false);
 	const [isLoaded, setIsLoaded] = useState(false);
-  const [profileIcon, setProfileIcon] = useState(4803);
-  const [buttonLoading, setButtonLoading] = useState(false)
+  	const [profileIcon, setProfileIcon] = useState(4803);
+	const [buttonLoading, setButtonLoading] = useState(false)
+	const [favChamp, setFavChamp] = useState({})
 	const [summonerLevel, setSummonerLevel] = useState(30);
 	const [rankedData, setRankedData] = useState([{}, {}]);
 	const [matches, setMatches] = useState([]);
 	let { input } = useParams();
+
 
 	useEffect(() => {
 		setIsLoaded(false);
@@ -31,6 +34,7 @@ const Summoner = (props) => {
 					}
 					setMatches(result.matchList);
 					setSummoner(result.sumName);
+					setFavChamp(displayWinrates(result.matchList, result.sumName).favoriteChamp)
 					setProfileIcon(result.profileIcon);
 					setRankedData(result.rankedInfo);
 					setSummonerLevel(result.summonerLevel);

@@ -1,0 +1,99 @@
+.champ-stats-div {
+  border: 1px solid rgba(128, 128, 128, 0.55);
+  margin-right: 5px;
+}
+.champ-stats-title {
+  border: 1px solid rgba(128, 128, 128, 0.55);
+  margin-right: 5px;
+  padding-right: 3px;
+  padding-top: 12px;
+  margin-bottom: 5px;
+  width: 265px;
+  height: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.champ-stats-child {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  
+}
+
+.champ-stats-img-div {
+  grid-area: 2 / 1 / 5 / 4;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  align-self: center;
+  border: 1px solid #2c2c40;
+  margin-left: -8px;
+}
+
+.champ-stats-img {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.2);
+}
+
+.name-kda {
+    grid-area: 2 / 4 / 5 / 8;
+    justify-self: start;
+    align-self: center;
+    display: flex;
+    margin-left: -12px;
+    flex-direction: column;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.wr-total {
+    grid-area: 2 / 8 / 5 / 12;
+    justify-self: end;
+    text-align: end;
+    padding-right: 22px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+}
+
+.champ-stats-wr{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.white {
+    color: #bbbedb;
+}
+
+.red {
+    color: #ff4e50;
+}
+
+.blue {
+    color: #08a6ff;
+}
+
+.orange {
+    color: rgb(255, 168, 55);
+}
+
+.stats-divider {
+    margin-left: auto;
+    margin-right: auto;
+    width: 170px;
+    height: 1px;
+    background-color: #808080;
+}

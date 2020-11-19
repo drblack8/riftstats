@@ -5,21 +5,22 @@
     padding-top: 18.5px;
     margin-bottom: 5px;
     width: 265px;
-    height: 67px;
-    text-align: center;
-    font-size: smaller;
+    height: 52px;
+    text-align: start;
+    font-size: 1.2rem;
     font-weight: 700;
 }
 
 .ranked-sum {
-    margin-top: 8px;
+    margin-top: 1px;
+    margin-left: 18px;
 }
 
 .soloq-rank {
     border: 1px solid rgba(128, 128, 128, 0.55);
     width: 265px;
     padding-right: 3px;
-    height: 125px;
+    height: 95px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -51,7 +52,8 @@
     border-right: 1px solid rgba(128, 128, 128, 0.55);
     width: 265px;
     padding-right: 3px;
-    height: 125px;
+    margin-bottom: 5px;
+    height: 95px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -128,7 +130,7 @@
     align-self: end;
     font-weight: bold;
     font-size: 11px;
-    margin-bottom: -6px;
+    margin-bottom: -3px;
     color: #ffffff;
 }
 
@@ -156,7 +158,7 @@
 
 
 .winrate, .flex-winrate {
-    margin-top: -7px;
+    margin-top: -3px;
 }
 
 .winrate-percent, .flex-winrate-percent {

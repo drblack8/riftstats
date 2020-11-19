@@ -44,7 +44,7 @@ const Stats = (props) => {
 		return (
 			<>
 				<div className="ranked-title">
-					<p className="ranked-sum">Ranked 2020 Season</p>
+					<p className="ranked-sum">Ranks</p>
 				</div>
 				<div>
 					<div className="soloq-rank">

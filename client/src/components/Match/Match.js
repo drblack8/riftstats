@@ -231,11 +231,12 @@ const Match = (props) => {
         </div>
         <div className="divider"></div>
         <div className="player-info">
+          <div className="champion-img">
           <img
-            className="champion-img"
             alt="Avatar"
             src={ChampData(results.champion).imageUrl}
           />
+          </div>
           <div className="spells">
             <img className="spell-1" alt="Spell" src={Spells(results.spell1)} />
             <img className="spell-2" alt="Spell" src={Spells(results.spell2)} />
@@ -260,10 +261,12 @@ const Match = (props) => {
             <div className="kda-math">
               <span
                 className={
-                  results.kda > 4
-                    ? "kda-blue"
-                    : results.kda < 1.5
+                  results.kda > 5
+                    ? "kda-orange"
+                    : results.kda < 1.50
                     ? "kda-red"
+                    : 4.00 < results.kda < 7.00
+                    ? "kda-blue"
                     : "kda-white"
                 }
               >
