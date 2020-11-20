@@ -20,6 +20,8 @@ const Navbar = () => {
   };
   const location = useLocation()
 
+  setLogged(false)
+
   useEffect(() => {
     if (location.pathname === '/') {
       setHome(true)

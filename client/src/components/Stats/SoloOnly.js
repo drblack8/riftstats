@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { getClassName } from './Helpers/getClassName';
 import { winrate } from './Helpers/winrate';
 import { totalGames } from './Helpers/totalGames';
@@ -15,7 +15,7 @@ const SoloOnly = (props) => {
 			</div>
 			<div className="both-ranks border-shadows">
 				<div className="soloq-rank">
-					<img className="ranked-badge" src={getRankImg(props.ranked[0].tier)} />
+					<img alt='' className="ranked-badge" src={getRankImg(props.ranked[0].tier)} />
 					<div className="solo-title titles">Ranked Solo</div>
 					<div className="ranked-tier tiers-div">
 						<span className={`current-rank-solo actual-tier ${getClassName(props.ranked[0].tier)}`}>
@@ -32,7 +32,7 @@ const SoloOnly = (props) => {
 				</div>
 				<div className="div-4-ranks"></div>
 				<div className="flex-rank">
-					<img className="flex-ranked-badge" src={getRankImg(null)} />
+					<img alt='' className="flex-ranked-badge" src={getRankImg(null)} />
 					<div className="flex-solo-title titles">Ranked Flex</div>
 					<div className="flex-ranked-tier tiers-div">
 						<span className={`flex-current-rank-solo actual-tier ${getClassName(null)}`}>

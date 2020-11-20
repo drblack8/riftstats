@@ -49,6 +49,7 @@ const ChampionStats = (props) => {
             <div className="champ-stats-child" >
               <div className="champ-stats-img-div">
                 <img
+                alt=''
                   className="champ-stats-img"
                   src={ChampData(el[0]).imageUrl}
                 />
