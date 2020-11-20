@@ -37,7 +37,7 @@ const ChampionStats = (props) => {
 
   return (
     <div>
-      <div className="champ-stats-title">
+      <div className="champ-stats-title border-shadows">
         <span>Champion WR</span>
         <span className="dash"> / </span>
         <span>100 Games</span>
