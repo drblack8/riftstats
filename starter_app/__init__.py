@@ -24,11 +24,7 @@ Migrate(app, db)
 CORS(app)
 
 
-@app.route('/')
-def index():
-    return 'Hello World'
-
-
+@app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
     print("path", path)

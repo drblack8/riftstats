@@ -21,3 +21,4 @@ ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
 EXPOSE 8000
 # Run flask environment
+CMD gunicorn starter_app:app
