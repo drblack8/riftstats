@@ -1,5 +1,5 @@
 .champ-stats-div {
-  border: 1px solid rgba(128, 128, 128, 0.55);
+  background-color: #222238;
   margin-right: 5px;
 }
 .champ-stats-title {
@@ -23,7 +23,7 @@
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  
+
 }
 
 .champ-stats-img-div {

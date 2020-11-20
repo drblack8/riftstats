@@ -200,6 +200,26 @@ body {
     font-size: small;
     color: #bbbedb;
     bottom: -6.5px;
-    left: 39.6%;
+    left: 40%;
     z-index: 2;
+}
+
+.sum-level {
+  position: absolute;
+  font-weight: bold;
+  font-size: small;
+  color: #bbbedb;
+  bottom: -6.5px;
+  left: 40%;
+  z-index: 2;
+}
+
+.sum-level-short {
+  position: absolute;
+  font-weight: bold;
+  font-size: small;
+  color: #bbbedb;
+  bottom: -6.5px;
+  left: 42%;
+  z-index: 2;
 }

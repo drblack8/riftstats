@@ -34,14 +34,16 @@ const Match = (props) => {
   const getItem = (key) => {
     if (key === 0) {
       return "https://i.imgur.com/ecL2A5y.png";
-    } else {
+    }
+    else if (props.match.gameCreation > 1605140418000) {
       return `http://ddragon.leagueoflegends.com/cdn/10.23.1/img/item/${key}.png`;
+    } else {
+      return `http://ddragon.leagueoflegends.com/cdn/10.1.1/img/item/${key}.png`
     }
   };
 
   const handleSubmit = (e) => {
 	e.preventDefault()
-	console.log(e.target)
 	history.push(`/summoner/${e.target.id}`)
 }
 

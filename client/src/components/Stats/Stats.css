@@ -1,5 +1,4 @@
 .ranked-title {
-    border: 1px solid rgba(128, 128, 128, 0.55);
     margin-right: 5px;
     padding-right: 3px;
     padding-top: 18.5px;
@@ -15,9 +14,32 @@
     margin-top: 1px;
     margin-left: 18px;
 }
+.div-4-ranks {
+    margin-left: auto;
+    margin-right: auto;
+    width: 170px;
+    height: 1px;
+    background-color: #808080;
+}
 
+.border-shadows {
+    border: 1px solid #2c2c40;
+    -webkit-box-shadow: inset 0px 0px 7px -3px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 0px 7px -3px rgba(0,0,0,0.5);
+}
+
+.dark-bg {
+    background-color: #0f0f1add;
+}
+
+.both-ranks {
+    background-color: #222238;
+    width: 265px;
+    padding-right: 6px;
+    height: 190px;
+    margin-bottom: 5px;
+}
 .soloq-rank {
-    border: 1px solid rgba(128, 128, 128, 0.55);
     width: 265px;
     padding-right: 3px;
     height: 95px;
@@ -47,9 +69,7 @@
 }
 
 .flex-rank {
-    border-bottom: 1px solid rgba(128, 128, 128, 0.55);
-    border-left: 1px solid rgba(128, 128, 128, 0.55);
-    border-right: 1px solid rgba(128, 128, 128, 0.55);
+
     width: 265px;
     padding-right: 3px;
     margin-bottom: 5px;
@@ -78,7 +98,6 @@
 .flex-winrate {
     grid-area: 6 / 5 / 8 / 11;
 }
-
 
 .flex-ranked-badge, .ranked-badge {
     width: 70px;
@@ -156,7 +175,6 @@
     color: #bbbedb;
 }
 
-
 .winrate, .flex-winrate {
     margin-top: -3px;
 }
@@ -174,5 +192,5 @@
 }
 
 .titles, .tiers-div, .flex-wins-losses, .wins-losses, .winrate, .flex-winrate {
-margin-left: 11px;
+    margin-left: 11px;
 }

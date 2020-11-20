@@ -8,7 +8,6 @@ const ChampionStats = (props) => {
   useEffect(() => {
     const stats = displayWinrates(props.matches, props.summonerName);
     setChampArr(stats.championArr);
-    console.log(stats);
   }, [props]);
 
   const getWR = e => {
@@ -43,7 +42,7 @@ const ChampionStats = (props) => {
         <span className="dash"> / </span>
         <span>100 Games</span>
       </div>
-      <div className="champ-stats-div">
+      <div className="champ-stats-div border-shadows">
         {champArr.slice(0, 8).map((el, idx) => {
           return (
             <div key={idx}>

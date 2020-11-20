@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ScaleLoader from "react-spinners/ScaleLoader"
-import GridLoader from "react-spinners/GridLoader"
+import ScaleLoader from 'react-spinners/ScaleLoader';
+import GridLoader from 'react-spinners/GridLoader';
 import Match from '../Match/Match';
 import { UpdButton } from './UpdButton/UpdButton';
 import Stats from '../Stats/Stats';
@@ -13,9 +13,9 @@ const Summoner = (props) => {
 	const [summoner, setSummoner] = useState('');
 	const [issue, setIssue] = useState(false);
 	const [isLoaded, setIsLoaded] = useState(false);
-  	const [profileIcon, setProfileIcon] = useState(4803);
-	const [buttonLoading, setButtonLoading] = useState(false)
-	const [favChamp, setFavChamp] = useState('')
+	const [profileIcon, setProfileIcon] = useState(4803);
+	const [buttonLoading, setButtonLoading] = useState(false);
+	const [favChamp, setFavChamp] = useState('');
 	const [summonerLevel, setSummonerLevel] = useState(30);
 	const [rankedData, setRankedData] = useState([{}, {}]);
 	const [matches, setMatches] = useState([]);
@@ -23,7 +23,7 @@ const Summoner = (props) => {
 
 	const randomizer = () => {
 		return Math.floor(Math.random() * Math.floor(2));
-	}
+	};
 
 	useEffect(() => {
 		setIsLoaded(false);
@@ -35,19 +35,23 @@ const Summoner = (props) => {
 						setIssue(true);
 						setIsLoaded(true);
 					} else {
-						setIssue(false)
+						setIssue(false);
 					}
 					try {
-						setFavChamp(`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${displayWinrates(result.matchList, result.sumName).favoriteChamp.id}_${randomizer()}.jpg`)
+						setFavChamp(
+							`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${
+								displayWinrates(result.matchList, result.sumName).favoriteChamp.id
+							}_${randomizer()}.jpg`
+						);
 					} catch (e) {
 						console.log(e);
 					} finally {
-					setMatches(result.matchList);
-					setSummoner(result.sumName);
-					setProfileIcon(result.profileIcon);
-					setRankedData(result.rankedInfo);
-					setSummonerLevel(result.summonerLevel);
-					setIsLoaded(true);
+						setMatches(result.matchList);
+						setSummoner(result.sumName);
+						setProfileIcon(result.profileIcon);
+						setRankedData(result.rankedInfo);
+						setSummonerLevel(result.summonerLevel);
+						setIsLoaded(true);
 					}
 				},
 				(error) => {
@@ -58,14 +62,13 @@ const Summoner = (props) => {
 	}, [input, issue]);
 
 	const handleUpdate = () => {
-    setButtonLoading(true)
+		setButtonLoading(true);
 		fetch(`/api/match/post/${input}`)
 			.then((res) => res.json())
 			.then(
 				(result) => {
-					console.log(result);
-          setMatches(result);
-          setButtonLoading(false)
+					setMatches(result);
+					setButtonLoading(false);
 				},
 				(error) => {
 					setError({ second: error });
@@ -82,15 +85,22 @@ const Summoner = (props) => {
 			</div>
 		);
 	} else if (!isLoaded) {
-		return <div className="loading"><GridLoader height={100} color="#ffffff"/></div>;
+		return (
+			<div className="loading">
+				<GridLoader height={100} color="#ffffff" />
+			</div>
+		);
 	} else if (issue) {
 		return (
-			<div className="issue-main">
-				<div className="issue-message">
-					<p>Summoner: [{input.toUpperCase()}] Does Not Exist.</p>
-					<p>Please try searching again.</p>
+			<div className="alert-sumpage">
+				<div className="alert-name">Summoner: [{input.toUpperCase()}] Does Not Exist.</div>
+				<div className="alert-icon">
+					<i className="fas fa-exclamation-triangle fa-10x"></i>
 				</div>
-				<div className="issue-search"></div>
+				<div className="alert-message">
+					<p>This summoner doesn't exist.</p>
+					<p>Please try searching again, capitalization and spacing shouldn't matter.</p>
+				</div>
 			</div>
 		);
 	} else if (isLoaded && matches.length === 0) {
@@ -98,64 +108,70 @@ const Summoner = (props) => {
 			<div className="alert-sumpage">
 				<div className="alert-name">Welcome to RiftStats {summoner}!</div>
 				<div className="alert-icon">
-				<i className="fas fa-exclamation-triangle fa-10x"></i>
+					<i className="fas fa-exclamation-triangle fa-10x"></i>
 				</div>
 				<div className="alert-message">
 					<p>We found you but we need to get you in the system first</p>
 					<p>so please hit the update button above!</p>
 				</div>
 				<div className="alert-update">
-					<UpdButton disabled={buttonLoading} onClick={handleUpdate}>{buttonLoading ? <ScaleLoader height={15} color="#ffffff" /> : "Update"}</UpdButton>
+					<UpdButton disabled={buttonLoading} onClick={handleUpdate}>
+						{buttonLoading ? <ScaleLoader height={15} color="#ffffff" /> : 'Update'}
+					</UpdButton>
 				</div>
 			</div>
 		);
 	} else if (isLoaded) {
 		return (
 			<>
-			<div className="sum-page">
-			<div className="sum-splash">
-				<div className="gradient"></div>
-				<img className="sum-splash-img" alt='' src={favChamp} />
-			</div>
-				<div className="sum-header">
-					<div className="sum-search-title">Welcome to your Stats Page!</div>
-					<div className="sum-page-search"></div>
-				</div>
+				<div className="sum-page">
+					<div className="sum-splash">
+						<div className="gradient"></div>
+						<img className="sum-splash-img" alt="" src={favChamp} />
+					</div>
+					<div className="sum-header">
+						<div className="sum-search-title"></div>
+						<div className="sum-page-search"></div>
+					</div>
 
-				<div className="sum-matches-title">
-					<p className="title-text">Below are your last 20 matches. Sort funtionality coming soon!</p>
-				</div>
-				<div className="sum-icon">
-					<div className="img-container">
-						<img className="top-img" src="https://i.imgur.com/phgH52r.png" alt="Profile" />
-						<img
-							className="bottom-img"
-							src={`https://raw.communitydragon.org/10.23/game/assets/ux/summonericons/profileicon${profileIcon}.png`}
-							alt="Profile"
-						/>
-						<p className="sum-level">{summonerLevel}</p>
+					<div className="sum-matches-title border-shadows dark-bg">
+						<p className="title-text">Below are your last 20 matches. Sort funtionality coming soon!</p>
+					</div>
+					<div className="sum-icon">
+						<div className="img-container">
+							<img className="top-img" src="https://i.imgur.com/phgH52r.png" alt="Profile" />
+							<img
+								className="bottom-img"
+								src={`https://raw.communitydragon.org/10.23/game/assets/ux/summonericons/profileicon${profileIcon}.png`}
+								alt="Profile"
+							/>
+							<p className={summonerLevel.toString().length > 2 ? 'sum-level' : 'sum-level-short'}>
+								{summonerLevel}
+							</p>
+						</div>
+					</div>
+
+					<div className="sum-name">{summoner}</div>
+					<div className="update-btn">
+						<UpdButton disabled={buttonLoading} onClick={handleUpdate}>
+							{buttonLoading ? <ScaleLoader height={15} color="#ffffff" /> : 'Update'}
+						</UpdButton>
+					</div>
+					<div className="sum-stats">
+						<Stats allMatches={matches} summonerName={summoner} ranked={rankedData} />
+					</div>
+					<div className="sum-matches">
+						<ul>
+							{matches.slice(0, 20).map((match, idx) => {
+								return (
+									<li key={idx}>
+										<Match match={match} summoner={summoner} />
+									</li>
+								);
+							})}
+						</ul>
 					</div>
 				</div>
-
-				<div className="sum-name">{summoner}</div>
-				<div className="update-btn">
-					<UpdButton disabled={buttonLoading} onClick={handleUpdate}>{buttonLoading ? <ScaleLoader height={15} color="#ffffff" /> : "Update"}</UpdButton>
-				</div>
-				<div className="sum-stats">
-					<Stats allMatches={matches} summonerName={summoner} ranked={rankedData} />
-				</div>
-				<div className="sum-matches">
-					<ul>
-						{matches.slice(0, 20).map((match, idx) => {
-							return (
-								<li key={idx}>
-									<Match match={match} summoner={summoner} />
-								</li>
-							);
-						})}
-					</ul>
-				</div>
-			</div>
 			</>
 		);
 	}
