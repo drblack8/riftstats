@@ -27,32 +27,35 @@ def update_matches(summoner):
     for match in matches:
         matchId = match['gameId']
         match_url = f'{base_url}/match/v4/matches/{matchId}?api_key={key}'
-        response = requests.get(match_url)
-        game_id = response.json()['gameId']
-        platform_id = response.json()['platformId']
-        game_creation = response.json()['gameCreation']
-        game_duration = response.json()['gameDuration']
-        queue_id = response.json()['queueId']
-        season_id = response.json()['seasonId']
-        game_mode = response.json()['gameMode']
-        teams = json.dumps(response.json()['teams'])
-        part = json.dumps(response.json()['participants'])
-        pi = json.dumps(response.json()['participantIdentities'])
         try:
-            new_match = Match(gameId=game_id,
-                              platformId=platform_id,
-                              gameCreation=game_creation,
-                              gameDuration=game_duration,
-                              queueId=queue_id, seasonId=season_id,
-                              gameMode=game_mode, teams=teams,
-                              participants=part,
-                              participantIdentities=pi)
-            db.session.add(new_match)
-            db.session.commit()
-        except SQLAlchemyError:
-            db.session.rollback()
-            print('Already there!')
-            continue
+            response = requests.get(match_url)
+            game_id = response.json()['gameId']
+            platform_id = response.json()['platformId']
+            game_creation = response.json()['gameCreation']
+            game_duration = response.json()['gameDuration']
+            queue_id = response.json()['queueId']
+            season_id = response.json()['seasonId']
+            game_mode = response.json()['gameMode']
+            teams = json.dumps(response.json()['teams'])
+            part = json.dumps(response.json()['participants'])
+            pi = json.dumps(response.json()['participantIdentities'])
+            try:
+                new_match = Match(gameId=game_id,
+                                  platformId=platform_id,
+                                  gameCreation=game_creation,
+                                  gameDuration=game_duration,
+                                  queueId=queue_id, seasonId=season_id,
+                                  gameMode=game_mode, teams=teams,
+                                  participants=part,
+                                  participantIdentities=pi)
+                db.session.add(new_match)
+                db.session.commit()
+            except SQLAlchemyError:
+                db.session.rollback()
+                print('Already there!')
+                continue
+        except requests.exceptions.RequestException as e:
+            break
     new_matches = Match.query.filter(Match.participantIdentities.like(
         f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
     match_list = [match.to_dict() for match in new_matches]

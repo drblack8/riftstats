@@ -38,7 +38,7 @@ const Match = (props) => {
     else if (props.match.gameCreation > 1605140418000) {
       return `http://ddragon.leagueoflegends.com/cdn/10.23.1/img/item/${key}.png`;
     } else {
-      return `http://ddragon.leagueoflegends.com/cdn/10.1.1/img/item/${key}.png`
+      return `http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/${key}.png`
     }
   };
 
@@ -68,6 +68,7 @@ const Match = (props) => {
             i
           ].player.summonerName.toLowerCase() === props.summoner.toLowerCase()
         ) {
+
           setResults({
 			name: props.match["participantIdentities"][i].player.summonerName,
 			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
@@ -218,7 +219,9 @@ const Match = (props) => {
     return <div></div>;
   } else if (isLoaded) {
     return (
-      <div className={results.win === "Win" ? "solo-match" : "solo-match-lost"}>
+      <>
+      {results != null &&
+        <div className={results.win === "Win" ? "solo-match" : "solo-match-lost"}>
         <div className="match-info">
           <div className="queue-type">{Queues(props.match.queueId)}</div>
           <div className="match-creation">
@@ -356,6 +359,8 @@ const Match = (props) => {
               })}
 		</div>
       </div>
+      }
+      </>
     );
   }
 };

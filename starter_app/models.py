@@ -36,6 +36,20 @@ class Match(db.Model):
         }
 
 
+# def example(self):
+#     return {
+#         "gameId": self.gameId,
+#         "platformId": self.platformId,
+#         "gameCreation": self.gameCreation,
+#         "gameDuration": self.gameDuration,
+#         "queueId": self.queueId,
+#         "seasonId": self.seasonId,
+#         "gameMode": self.gameMode,
+#         "teams": json.load(StringIO(self.teams)),
+#         "participants": json.load(StringIO(self.participants)),
+#         "participantIdentities": [{participanti.participantId}json.load(
+#             StringIO(self.participantIdentities))],
+#     }
 # class Summoner(db.Model):
 #     __tablename__ = 'summoners'
 

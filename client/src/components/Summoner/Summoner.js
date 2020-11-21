@@ -79,9 +79,15 @@ const Summoner = (props) => {
 	if (error) {
 		console.log('Error: ', error.message);
 		return (
-			<div className="sum-page">
-				<div className="sum-page-search"></div>
-				<div className="no-sum">No results for {input}</div>
+			<div className="alert-sumpage">
+				<div className="alert-name">Whoops!</div>
+				<div className="alert-icon">
+					<i className="fas fa-exclamation-triangle fa-10x"></i>
+				</div>
+				<div className="alert-message">
+					<p>The stats for this user are far too old.</p>
+					<p>Try refreshing, if that doesn't work please play a few games and update.</p>
+				</div>
 			</div>
 		);
 	} else if (!isLoaded) {
