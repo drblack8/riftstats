@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { Button } from "../Button/Button";
 import { MenuItems } from "./MenuItems";
 import NestedSearch from "./NestedSearch/NestedSearch";
@@ -29,13 +29,11 @@ const Navbar = () => {
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
-          RiftStats
+          <Link to='/'>RiftStats</Link>
         </h1>
-        {(!home) &&
             <div className="navbar-search">
             <NestedSearch />
           </div>
-        }
         <div className="menu-icon" onClick={handleClick}>
           <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
         </div>

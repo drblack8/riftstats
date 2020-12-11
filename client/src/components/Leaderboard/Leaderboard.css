@@ -1,0 +1,88 @@
+.rank-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 6px;
+    align-content: stretch;
+    background-color: #222238;
+}
+.single-rank {
+    display: grid;
+    grid-template-columns: .5fr 1fr 1.5fr repeat(8, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-items: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.chal-rank {
+    justify-self: center;
+    grid-area: 1 / 1 / 2 / 2;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+.chal-img {
+    justify-self: center;
+    grid-area: 1 / 2 / 2 / 3;
+    border-radius: 50%;
+    width: 40px;
+    height: auto;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+.chal-name {
+    justify-self: start;
+    grid-area: 1 / 3 / 2 / 5;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+.chal-lp {
+    justify-self: center;
+    grid-area: 1 / 5 / 2 / 6;
+    font-weight: bold;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+.leaguePoints {
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.misc {
+    font-weight: bold;
+    font-size: 11px;
+    color: #bbbedb;
+}
+
+.chal-stats {
+    grid-area: 1 / 7 / 2 / 9;
+}
+
+.chal-wr {
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.chal-games {
+    font-weight: bold;
+    font-size: 11px;
+    color: #bbbedb;
+}
+
+button {
+    grid-area: 1 / 11 / 2 / 12;
+    justify-self: end;
+}

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Button } from '../Button/Button';
+import './Leaderboard.css';
 
 const Leaderboard = () => {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [error, setError] = useState(null);
-    const [ranks, setRanks] = useState([])
-    const history = useHistory()
+	const [isLoaded, setIsLoaded] = useState(false);
+	const [error, setError] = useState(null);
+	const [ranks, setRanks] = useState([]);
+	const history = useHistory();
 
 	useEffect(() => {
 		setIsLoaded(false);
@@ -13,8 +15,7 @@ const Leaderboard = () => {
 			.then((res) => res.json())
 			.then(
 				(result) => {
-                    console.log(result);
-					setRanks(result)
+					setRanks(result);
 				},
 				(error) => {
 					setError({ first: error });
@@ -23,43 +24,46 @@ const Leaderboard = () => {
 			);
 	}, []);
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        history.push(`/summoner/${e.target.id}`)
-    }
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(e.target.id);
+		console.log(e.target);
+		history.push(`/summoner/${e.target.id}`);
+	};
 
-    return (
-        <div className="leaderboard">
-            <div className="rank-list">
-                {ranks.map((el, idx) => (
-                    <div className="single-rank" key={idx}>
-                        <div className="chal-rank">
-                            {idx + 1}
-                        </div>
-                        <div className="chal-icon">
-                            {el['losses']}
-                        </div>
-                        <div className="challenger">
-                            {el['name']}
-                        </div>
-                        <div className="chal-lp">
-                            {el['leaguePoints']}
-                        </div>
-                        <div className="chal-wins">
-                            {el['wins']}
-                        </div>
-                        <div className="chal-losses">
-                            {el['losses']}
-                        </div>
-                        <div className="chal-losses">
-                            {el['losses']}
-                        </div>
-
-                    </div>
-                ))}
-            </div>
-        </div>
-    )
-}
+	return (
+		<div className="leaderboard">
+			<div className="rank-list border-shadows">
+				{ranks.map((el, idx) => (
+					<div className="single-rank" id={idx} key={idx}>
+						<div className="chal-rank">{idx + 1}.</div>
+						<div className="chal-icon">
+							<img
+								className="chal-img"
+								src={`https://raw.communitydragon.org/10.23/game/assets/ux/summonericons/profileicon${el['profileIcon']}.png`}
+								alt="Profile"
+							/>
+						</div>
+						<div className="chal-name">{el['name']}</div>
+						<div className="chal-lp">
+                            <span className='leaguePoints'>{el['leaguePoints']}</span>
+                            <span className='misc'> LP</span>
+                            </div>
+						<div className="chal-stats">
+							<span className="chal-wr">
+								{Math.round((el['wins'] / (el['wins'] + el['losses'])) * 100)}% WR
+							</span>
+							<span className="dash"> / </span>
+							<span className="chal-games">{el['wins'] + el['losses']} Games</span>
+						</div>
+							<Button id={el['name']} onClick={handleSubmit}>
+								Stats
+							</Button>
+					</div>
+				))}
+			</div>
+		</div>
+	);
+};
 
 export default Leaderboard;
