@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 
 from starter_app.models import db
 from starter_app.api.summoner_routes import summoner_routes
+from starter_app.api.leaderboard_routes import leaderboard_routes
 from starter_app.api.match_routes import match_routes
 
 from starter_app.config import Config
@@ -15,6 +16,7 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 app.register_blueprint(summoner_routes, url_prefix='/api/summoner')
+app.register_blueprint(leaderboard_routes, url_prefix='/api/leaderboard')
 app.register_blueprint(match_routes, url_prefix='/api/match')
 
 
