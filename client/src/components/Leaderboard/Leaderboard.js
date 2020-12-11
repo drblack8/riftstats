@@ -29,8 +29,35 @@ const Leaderboard = () => {
     }
 
     return (
-        <div>
-            Hi
+        <div className="leaderboard">
+            <div className="rank-list">
+                {ranks.map((el, idx) => (
+                    <div className="single-rank" key={idx}>
+                        <div className="chal-rank">
+                            {idx + 1}
+                        </div>
+                        <div className="chal-icon">
+                            {el['losses']}
+                        </div>
+                        <div className="challenger">
+                            {el['name']}
+                        </div>
+                        <div className="chal-lp">
+                            {el['leaguePoints']}
+                        </div>
+                        <div className="chal-wins">
+                            {el['wins']}
+                        </div>
+                        <div className="chal-losses">
+                            {el['losses']}
+                        </div>
+                        <div className="chal-losses">
+                            {el['losses']}
+                        </div>
+
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
