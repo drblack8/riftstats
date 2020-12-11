@@ -35,6 +35,7 @@ const Leaderboard = () => {
 		<div className="leaderboard">
 			<div className="rank-list border-shadows">
 				{ranks.map((el, idx) => (
+                    <>
 					<div className="single-rank" id={idx} key={idx}>
 						<div className="chal-rank">{idx + 1}.</div>
 						<div className="chal-icon">
@@ -60,6 +61,10 @@ const Leaderboard = () => {
 								Stats
 							</Button>
 					</div>
+                    {idx < ranks.length - 1 &&
+                        <div className="chal-divider"></div>
+                    }
+                    </>
 				))}
 			</div>
 		</div>

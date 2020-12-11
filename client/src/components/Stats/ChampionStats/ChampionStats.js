@@ -67,7 +67,7 @@ const ChampionStats = (props) => {
                 <div className="total-games-stat">{el[1][0][2]} games</div>
               </div>
             </div>
-            {idx < 7 &&
+            {idx < champArr.slice(0, 8).length - 1 &&
               <div className="stats-divider"></div>
             }
             </div>
