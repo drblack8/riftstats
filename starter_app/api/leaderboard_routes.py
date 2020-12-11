@@ -8,7 +8,7 @@ leaderboard_routes = Blueprint('leaderboard', __name__)
 base_url = 'https://na1.api.riotgames.com/lol'
 
 
-@leaderboard_routes.route('/leaderboard')
+@leaderboard_routes.route('/current')
 def leaderboards():
     key = os.environ.get('RIOT_API_KEY')
 
@@ -20,22 +20,22 @@ def leaderboards():
     players = requests.get(lb_url).json()
 
     res = []
-    for player in players:
-        summoner = player['summonerName']
+    for i in range(0, 10):
+        name = players[i]['summonerName']
         account_url = (
             f'{base_url}/summoner/v4/summoners/by-name/'
-            f'{summoner}?api_key={key}'
+            f'{name}?api_key={key}'
         )
         summoner = requests.get(account_url)
         icon = summoner.json()['profileIconId']
 
         sub = {
-            name: summoner,
-            profileIcon: icon,
-            wins: player['wins'],
-            losses: player['losses'],
-            leaguePoints: player['leaguePoints'],
-            tier: player['tier'],
+            'name': name,
+            'profileIcon': icon,
+            'wins': players[i]['wins'],
+            'losses': players[i]['losses'],
+            'leaguePoints': players[i]['leaguePoints'],
+            'tier': players[i]['tier'],
         }
 
         res.append(sub)
