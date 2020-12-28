@@ -2,13 +2,12 @@ import React from 'react'
 import Leaderboard from '../Leaderboard/Leaderboard';
 import SearchBar from '../SearchBar/SearchBar';
 import './Home.css'
+import GridLoader from 'react-spinners/GridLoader';
 
 const Home = () => {
     return (
         <div className="home">
-            <div className='home-search border-shadows'>
-                <h1 className='chal-title'>Challenger Rankings</h1>
-            </div>
+
             <div className="home-board">
                 <Leaderboard />
             </div>

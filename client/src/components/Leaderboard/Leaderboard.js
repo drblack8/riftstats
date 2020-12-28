@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../Button/Button';
 import './Leaderboard.css';
+import GridLoader from 'react-spinners/GridLoader';
 
 const Leaderboard = () => {
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -16,6 +17,7 @@ const Leaderboard = () => {
 			.then(
 				(result) => {
 					setRanks(result);
+					setIsLoaded(true)
 				},
 				(error) => {
 					setError({ first: error });
@@ -31,7 +33,18 @@ const Leaderboard = () => {
 		history.push(`/summoner/${e.target.id}`);
 	};
 
+	if (!isLoaded) {
+		return (
+			<div className="loading">
+				<GridLoader height={100} color="#ffffff" />
+			</div>
+		);
+	} else {
 	return (
+		<>
+		<div className='home-search border-shadows'>
+                <h1 className='chal-title'>Challenger Rankings</h1>
+        </div>
 		<div className="leaderboard">
 			<div className="rank-list border-shadows">
 				{ranks.map((el, idx) => (
@@ -68,7 +81,9 @@ const Leaderboard = () => {
 				))}
 			</div>
 		</div>
+		</>
 	);
+	}
 };
 
 export default Leaderboard;
