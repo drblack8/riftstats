@@ -29,7 +29,7 @@ const Navbar = () => {
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
-          <Link to='/'>RiftStats</Link>
+          <Link to='/' className="navbar-logo">RiftStats</Link>
         </h1>
             <div className="navbar-search">
             <NestedSearch />

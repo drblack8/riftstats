@@ -18,7 +18,8 @@
     justify-content: start;
     margin-left: 20px;
     font-size: 2rem;
-    cursor: pointer;
+    /* cursor: pointer; */
+    text-decoration: none;
 }
 
 .navbar-search {
