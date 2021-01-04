@@ -2,6 +2,7 @@
 # RiftStats
 *By Daniel Black - [Check out RiftStats](https:/gxrift.com/)*
 - League of Legends Stat Analysis
+- Updates to Live game analysis coming soon!
 
 **Table of Contents**
 
