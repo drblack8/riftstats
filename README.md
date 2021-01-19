@@ -435,7 +435,7 @@ Thanks for checking out [RiftStats](https://whatsinthesauce.herokuapp.com/)!
 
 &check; As a user I'd like to be able to update my data at any given time, even seconds after I complete a game.
 
-# MVP
+# MinVP
 &check; Match History
 
 &check; Search Functionality
