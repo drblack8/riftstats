@@ -1,6 +1,6 @@
 
 # RiftStats
-*By Daniel Black - [Check out RiftStats](https://gxrift.com/)*
+*Created By Black - [Check out RiftStats](https://gxrift.com/)*
 - League of Legends Stat Analysis
 
 **Table of Contents**
