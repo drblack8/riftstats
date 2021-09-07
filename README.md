@@ -1,5 +1,5 @@
 
-# RiftStats
+# RiftStats/GXRift
 *Created By Dan Black - [Check out RiftStats](https://gxrift.com/)*
 - League of Legends Stat Analysis
 
