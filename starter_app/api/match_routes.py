@@ -20,13 +20,13 @@ def update_matches(summoner):
     summoner = requests.get(account_url)
     account_id = summoner.json()['accountId']
     matches_url = (
-        f'{base_url}/match/v4/matchlists/by-account/'
+        f'{base_url}/match/v5/matchlists/by-account/'
         f'{account_id}?endIndex=50&api_key={key}'
     )
     matches = requests.get(matches_url).json()['matches']
     for match in matches:
         matchId = match['gameId']
-        match_url = f'{base_url}/match/v4/matches/{matchId}?api_key={key}'
+        match_url = f'{base_url}/match/v5/matches/{matchId}?api_key={key}'
         try:
             response = requests.get(match_url)
             game_id = response.json()['gameId']
