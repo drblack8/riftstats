@@ -23,8 +23,12 @@ def update_matches(summoner):
         f'{base_url}/match/v5/matchlists/by-account/'
         f'{account_id}?endIndex=50&api_key={key}'
     )
+    print(requests.get(matches_url).json())
+
     matches = requests.get(matches_url).json()['matches']
+    # print("match:", matches)
     for match in matches:
+        # print("match:", match)
         matchId = match['gameId']
         match_url = f'{base_url}/match/v5/matches/{matchId}?api_key={key}'
         try:
