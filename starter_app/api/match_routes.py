@@ -23,7 +23,7 @@ def update_matches(summoner):
         f'{base_url}/match/v5/matchlists/by-account/'
         f'{account_id}?endIndex=50&api_key={key}'
     )
-    print(requests.get(matches_url).json())
+    print("RIGHT HERE:", requests.get(matches_url).json())
 
     matches = requests.get(matches_url).json()['matches']
     # print("match:", matches)
