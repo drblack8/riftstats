@@ -11,6 +11,7 @@ import Unranked from './Unranked';
 import ChampionStats from './ChampionStats/ChampionStats';
 
 const Stats = (props) => {
+	console.log(props);
 	const rankStatus = (props) => {
 		if (props.ranked.length === 0) {
 			return 3;
@@ -21,6 +22,8 @@ const Stats = (props) => {
 				return 2;
 			}
 		} else if (props.ranked.length === 2) {
+			return 1;
+		} else if (props.ranked.length === 3) {
 			return 1;
 		}
 	};
@@ -39,40 +42,40 @@ const Stats = (props) => {
 				</div>
 				<div className="both-ranks border-shadows">
 					<div className="soloq-rank">
-						<img alt='' className="ranked-badge" src={getRankImg(props.ranked[0].tier)} />
+						<img alt='' className="ranked-badge" src={getRankImg(props.ranked[1].tier)} />
 						<div className="solo-title titles">Ranked Solo</div>
 						<div className="ranked-tier tiers-div">
-							<span className={`current-rank-solo actual-tier ${getClassName(props.ranked[0].tier)}`}>
-								{getRankTier(props.ranked[0].tier, props.ranked[0].rank)}
+							<span className={`current-rank-solo actual-tier ${getClassName(props.ranked[1].tier)}`}>
+								{getRankTier(props.ranked[1].tier, props.ranked[1].rank)}
 							</span>
 							<span className="dash"> / </span>
-							<span className="league-points"> {props.ranked[0].leaguePoints} LP</span>
+							<span className="league-points"> {props.ranked[1].leaguePoints} LP</span>
 						</div>
 						<div className="winrate">
-							<span className="winrate-percent">{winrate(props, 0)} WR</span>
+							<span className="winrate-percent">{winrate(props, 1)} WR</span>
 							<span className="dash"> / </span>
-							<span className="total-games"> {totalGames(props, 0)} Games</span>
+							<span className="total-games"> {totalGames(props, 1)} Games</span>
 						</div>
 					</div>
 					<div className="div-4-ranks"></div>
 					<div className="flex-rank">
-						<img alt='' className="flex-ranked-badge" src={getRankImg(props.ranked[1].tier)} />
+						<img alt='' className="flex-ranked-badge" src={getRankImg(props.ranked[0].tier)} />
 						<div className="flex-solo-title titles">Ranked Flex</div>
 						<div className="flex-ranked-tier tiers-div">
 							<span
-								className={`flex-current-rank-solo actual-tier ${getClassName(props.ranked[1].tier)}`}
+								className={`flex-current-rank-solo actual-tier ${getClassName(props.ranked[0].tier)}`}
 							>
 								{props.ranked.length > 1
-									? getRankTier(props.ranked[1].tier, props.ranked[1].rank)
+									? getRankTier(props.ranked[0].tier, props.ranked[0].rank)
 									: 'Unranked'}
 							</span>
 							<span className="dash"> / </span>
-							<span className="flex-league-points"> {props.ranked[1].leaguePoints} LP</span>
+							<span className="flex-league-points"> {props.ranked[0].leaguePoints} LP</span>
 						</div>
 						<div className="flex-winrate">
-							<span className="flex-winrate-percent">{winrate(props, 1)} WR</span>
+							<span className="flex-winrate-percent">{winrate(props, 0)} WR</span>
 							<span className="dash"> / </span>
-							<span className="flex-total-games"> {totalGames(props, 1)} Games</span>
+							<span className="flex-total-games"> {totalGames(props, 0)} Games</span>
 						</div>
 					</div>
 				</div>

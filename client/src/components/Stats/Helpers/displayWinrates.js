@@ -4,18 +4,21 @@ export const displayWinrates = (matches, summoner) => {
 	let win_loss = [0, 0];
 	let champion_winrates = {};
 
+	// console.log("KILLS:", matches[1].participants[1].kills);
+
 	matches.forEach((match) => {
 		let champion = 0;
 		let participantId = 0;
 		let kills = 0;
 		let assists = 0;
 		let deaths = 0;
+
 		match.participantIdentities.forEach((player) => {
 			if (player['player']['summonerName'].toLowerCase() === summoner.toLowerCase()) {
 				participantId = player.participantId;
-				kills += match.participants[participantId - 1].stats.kills;
-				deaths += match.participants[participantId - 1].stats.deaths;
-				assists += match.participants[participantId - 1].stats.assists;
+				kills += match.participants[participantId - 1].kills;
+				deaths += match.participants[participantId - 1].deaths;
+				assists += match.participants[participantId - 1].assists;
 				champion += match['participants'][participantId - 1]['championId'];
 			}
 		});
@@ -25,7 +28,7 @@ export const displayWinrates = (matches, summoner) => {
 		} else {
 			team = 1;
 		}
-		if (match['teams'][team]['win'] === 'Win') {
+		if (match['teams'][team]['win'] ===  true) {
 			win_loss[0] += 1;
 			if (champion in champion_winrates) {
 				champion_winrates[champion][0][0] += 1;

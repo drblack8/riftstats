@@ -28,8 +28,9 @@ def get_sum(username):
         )
         ranked_data = requests.get(ranked_url)
         print('RANKED DATA: ', ranked_data)
-        # account_id = summoner.json()['puuid'] THIS NEEDS TO BE NEW ACC ID
-        account_id = summoner.json()['accountId']
+        account_id = summoner.json()['puuid']
+        # THIS NEEDS TO BE NEW ACC ID
+        # account_id = summoner.json()['accountId']
         puuid = summoner.json()['puuid']
         summoner_name = summoner.json()['name']
         profile_icon = summoner.json()['profileIconId']

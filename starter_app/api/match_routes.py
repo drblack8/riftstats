@@ -16,10 +16,11 @@ def find_pi(dict):
     parts = dict['participants']
     for i in parts:
         pi.append({
-            'particapntId': i['participantId'],
+            'participantId': i['participantId'],
             'player': {
                 'accountId': i['puuid'],
                 'profileIcon': i['profileIcon'],
+                'summonerName': i['summonerName']
             },
         })
     return pi

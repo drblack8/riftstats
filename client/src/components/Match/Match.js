@@ -16,7 +16,7 @@ const Match = (props) => {
   const history = useHistory()
 
   const winner = (res) => {
-    if (res === "Win") {
+    if (res === true) {
       return "VICTORY";
     }
     return "DEFEAT";
@@ -35,8 +35,11 @@ const Match = (props) => {
     if (key === 0) {
       return "https://i.imgur.com/ecL2A5y.png";
     }
+    if (8001 > key && key > 6996) {
+      return 'http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/Ornn.png'
+    }
     else if (props.match.gameCreation > 1605140418000) {
-      return `http://ddragon.leagueoflegends.com/cdn/10.23.1/img/item/${key}.png`;
+      return `https://ddragon.leagueoflegends.com/cdn/11.23.1/img/item/${key}.png`;
     } else {
       return `http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/${key}.png`
     }
@@ -56,9 +59,9 @@ const Match = (props) => {
 
     for (let i = 0; i < 10; i++) {
       if (i < 5) {
-        t1Kills += props.match["participants"][i].stats.kills;
+        t1Kills += props.match["participants"][i].kills;
       } else {
-        t2Kills += props.match["participants"][i].stats.kills;
+        t2Kills += props.match["participants"][i].kills;
       }
     }
     for (let i = 0; i < 10; i++) {
@@ -74,45 +77,45 @@ const Match = (props) => {
 			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             win: props.match.teams[0].win,
             champion: props.match["participants"][i].championId,
-            spell1: props.match["participants"][i].spell1Id,
-            spell2: props.match["participants"][i].spell2Id,
-            keystone: props.match["participants"][i].stats.perk0,
-            tree: props.match["participants"][i].stats.perkSubStyle,
-            level: props.match["participants"][i].spell2Id,
+            spell1: props.match["participants"][i].summoner1Id,
+            spell2: props.match["participants"][i].summoner2Id,
+            keystone: props.match["participants"][i].perks.styles[0].style,
+            tree: props.match["participants"][i].perks.styles[1].style,
+            level: props.match["participants"][i].summoner2Id,
             items: {
-              item0: props.match["participants"][i].stats.item0,
-              item1: props.match["participants"][i].stats.item1,
-              item2: props.match["participants"][i].stats.item2,
-              item3: props.match["participants"][i].stats.item3,
-              item4: props.match["participants"][i].stats.item4,
-              item5: props.match["participants"][i].stats.item5,
-              ward: props.match["participants"][i].stats.item6,
+              item0: props.match["participants"][i].item0,
+              item1: props.match["participants"][i].item1,
+              item2: props.match["participants"][i].item2,
+              item3: props.match["participants"][i].item3,
+              item4: props.match["participants"][i].item4,
+              item5: props.match["participants"][i].item5,
+              ward: props.match["participants"][i].item6,
             },
             farm:
-              props.match["participants"][i].stats.totalMinionsKilled +
-              props.match["participants"][i].stats.neutralMinionsKilled,
+              props.match["participants"][i].totalMinionsKilled +
+              props.match["participants"][i].neutralMinionsKilled,
             farmpm: (
-              (props.match["participants"][i].stats.totalMinionsKilled +
-                props.match["participants"][i].stats.neutralMinionsKilled) /
+              (props.match["participants"][i].totalMinionsKilled +
+                props.match["participants"][i].neutralMinionsKilled) /
               (props.match.gameDuration / 60)
             ).toFixed(1),
             kp: (
-              ((props.match["participants"][i].stats.kills +
-                props.match["participants"][i].stats.assists) /
+              ((props.match["participants"][i].kills +
+                props.match["participants"][i].assists) /
                 t1Kills) *
               100
             ).toFixed(0),
-            multikill: props.match["participants"][i].stats.largestMultiKill,
-            role: props.match["participants"][i].timeline.role,
-            lane: props.match["participants"][i].timeline.lane,
-            kills: props.match["participants"][i].stats.kills,
-            assists: props.match["participants"][i].stats.assists,
-            deaths: props.match["participants"][i].stats.deaths,
-            vscore: props.match["participants"][i].stats.visionScore,
+            multikill: props.match["participants"][i].largestMultiKill,
+            role: props.match["participants"][i].role,
+            lane: props.match["participants"][i].lane,
+            kills: props.match["participants"][i].kills,
+            assists: props.match["participants"][i].assists,
+            deaths: props.match["participants"][i].deaths,
+            vscore: props.match["participants"][i].visionScore,
             kda:
-              (props.match["participants"][i].stats.kills +
-                props.match["participants"][i].stats.assists) /
-              props.match["participants"][i].stats.deaths,
+              (props.match["participants"][i].kills +
+                props.match["participants"][i].assists) /
+              props.match["participants"][i].deaths,
           });
           t1.push({
             user: true,
@@ -120,9 +123,9 @@ const Match = (props) => {
 			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             champion: props.match["participants"][i].championId,
             team: 1,
-            role: props.match["participants"][i].timeline.role,
-            lane: props.match["participants"][i].timeline.lane,
-            kda: `${props.match["participants"][i].stats.kills} / ${props.match["participants"][i].stats.deaths} / ${props.match["participants"][i].stats.assists}`,
+            role: props.match["participants"][i].role,
+            lane: props.match["participants"][i].lane,
+            kda: `${props.match["participants"][i].kills} / ${props.match["participants"][i].deaths} / ${props.match["participants"][i].assists}`,
           });
         } else {
           t1.push({
@@ -130,9 +133,9 @@ const Match = (props) => {
 			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             champion: props.match["participants"][i].championId,
             team: 1,
-            role: props.match["participants"][i].timeline.role,
-            lane: props.match["participants"][i].timeline.lane,
-            kda: `${props.match["participants"][i].stats.kills} / ${props.match["participants"][i].stats.deaths} / ${props.match["participants"][i].stats.assists}`,
+            role: props.match["participants"][i].role,
+            lane: props.match["participants"][i].lane,
+            kda: `${props.match["participants"][i].kills} / ${props.match["participants"][i].deaths} / ${props.match["participants"][i].assists}`,
           });
         }
       } else if (i >= 5) {
@@ -142,49 +145,49 @@ const Match = (props) => {
           ].player.summonerName.toLowerCase() === props.summoner.toLowerCase()
         ) {
           setResults({
-			name: props.match["participantIdentities"][i].player.summonerName,
-			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
-            win: props.match.teams[1].win,
+			      name: props.match["participantIdentities"][i].player.summonerName,
+			      short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
+            win: props.match["participants"][i].win,
             champion: props.match["participants"][i].championId,
-            spell1: props.match["participants"][i].spell1Id,
-            spell2: props.match["participants"][i].spell2Id,
-            keystone: props.match["participants"][i].stats.perk0,
-            tree: props.match["participants"][i].stats.perkSubStyle,
-            level: props.match["participants"][i].spell2Id,
+            spell1: props.match["participants"][i].summoner1Id,
+            spell2: props.match["participants"][i].summoner2Id,
+            keystone: props.match["participants"][i].perks.styles[0].style,
+            tree: props.match["participants"][i].perks.styles[1].style,
+            level: props.match["participants"][i].summoner2Id,
             items: {
-              item0: props.match["participants"][i].stats.item0,
-              item1: props.match["participants"][i].stats.item1,
-              item2: props.match["participants"][i].stats.item2,
-              item3: props.match["participants"][i].stats.item3,
-              item4: props.match["participants"][i].stats.item4,
-              item5: props.match["participants"][i].stats.item5,
-              ward: props.match["participants"][i].stats.item6,
+              item0: props.match["participants"][i].item0,
+              item1: props.match["participants"][i].item1,
+              item2: props.match["participants"][i].item2,
+              item3: props.match["participants"][i].item3,
+              item4: props.match["participants"][i].item4,
+              item5: props.match["participants"][i].item5,
+              ward: props.match["participants"][i].item6,
             },
             farm:
-              props.match["participants"][i].stats.totalMinionsKilled +
-              props.match["participants"][i].stats.neutralMinionsKilled,
+              props.match["participants"][i].totalMinionsKilled +
+              props.match["participants"][i].neutralMinionsKilled,
             farmpm: (
-              (props.match["participants"][i].stats.totalMinionsKilled +
-                props.match["participants"][i].stats.neutralMinionsKilled) /
+              (props.match["participants"][i].totalMinionsKilled +
+                props.match["participants"][i].neutralMinionsKilled) /
               (props.match.gameDuration / 60)
             ).toFixed(1),
             kp: (
-              ((props.match["participants"][i].stats.kills +
-                props.match["participants"][i].stats.assists) /
+              ((props.match["participants"][i].kills +
+                props.match["participants"][i].assists) /
                 t2Kills) *
               100
             ).toFixed(0),
-            multikill: props.match["participants"][i].stats.largestMultiKill,
-            role: props.match["participants"][i].timeline.role,
-            lane: props.match["participants"][i].timeline.lane,
-            kills: props.match["participants"][i].stats.kills,
-            assists: props.match["participants"][i].stats.assists,
-            deaths: props.match["participants"][i].stats.deaths,
-            vscore: props.match["participants"][i].stats.visionScore,
+            multikill: props.match["participants"][i].largestMultiKill,
+            role: props.match["participants"][i].role,
+            lane: props.match["participants"][i].lane,
+            kills: props.match["participants"][i].kills,
+            assists: props.match["participants"][i].assists,
+            deaths: props.match["participants"][i].deaths,
+            vscore: props.match["participants"][i].visionScore,
             kda:
-              (props.match["participants"][i].stats.kills +
-                props.match["participants"][i].stats.assists) /
-              props.match["participants"][i].stats.deaths,
+              (props.match["participants"][i].kills +
+                props.match["participants"][i].assists) /
+              props.match["participants"][i].deaths,
           });
           t2.push({
             user: true,
@@ -192,9 +195,9 @@ const Match = (props) => {
 			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             champion: props.match["participants"][i].championId,
             team: 2,
-            role: props.match["participants"][i].timeline.role,
-            lane: props.match["participants"][i].timeline.lane,
-            kda: `${props.match["participants"][i].stats.kills} / ${props.match["participants"][i].stats.deaths} / ${props.match["participants"][i].stats.assists}`,
+            role: props.match["participants"][i].role,
+            lane: props.match["participants"][i].lane,
+            kda: `${props.match["participants"][i].kills} / ${props.match["participants"][i].deaths} / ${props.match["participants"][i].assists}`,
           });
         } else {
           t2.push({
@@ -202,9 +205,9 @@ const Match = (props) => {
 			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             champion: props.match["participants"][i].championId,
             team: 2,
-            role: props.match["participants"][i].timeline.role,
-            lane: props.match["participants"][i].timeline.lane,
-            kda: `${props.match["participants"][i].stats.kills} / ${props.match["participants"][i].stats.deaths} / ${props.match["participants"][i].stats.assists}`,
+            role: props.match["participants"][i].role,
+            lane: props.match["participants"][i].lane,
+            kda: `${props.match["participants"][i].kills} / ${props.match["participants"][i].deaths} / ${props.match["participants"][i].assists}`,
           });
         }
       }
@@ -221,13 +224,13 @@ const Match = (props) => {
     return (
       <>
       {results != null &&
-        <div className={results.win === "Win" ? "solo-match" : "solo-match-lost"}>
+        <div className={results.win === true ? "solo-match" : "solo-match-lost"}>
         <div className="match-info">
           <div className="queue-type">{Queues(props.match.queueId)}</div>
           <div className="match-creation">
             {GetTime(props.match.gameCreation)}
           </div>
-          <div className={results.win === "Win" ? "victory" : "defeat"}>
+          <div className={results.win === true ? "victory" : "defeat"}>
             {winner(results.win)}
           </div>
           <div className="duration">
