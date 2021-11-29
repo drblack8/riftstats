@@ -37,7 +37,7 @@ def get_sum(username):
         res = Match.query.filter(
             Match.participantIdentities.like(f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
         match_list = [match.to_dict() for match in res]
-        print('MATCHLIST:', match_list[1]['gameId'])
+        # print('MATCHLIST:', match_list[1]['gameId'])
         return jsonify({
             "matchList": match_list,
             "token": account_id,

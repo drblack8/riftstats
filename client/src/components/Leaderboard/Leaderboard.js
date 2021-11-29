@@ -54,7 +54,7 @@ const Leaderboard = () => {
 						<div className="chal-icon">
 							<img
 								className="chal-img"
-								src={`https://raw.communitydragon.org/10.23/game/assets/ux/summonericons/profileicon${el['profileIcon']}.png`}
+								src={`https://raw.communitydragon.org/11.23/game/assets/ux/summonericons/profileicon${el['profileIcon']}.png`}
 								alt="Profile"
 							/>
 						</div>

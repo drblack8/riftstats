@@ -149,7 +149,7 @@ const Summoner = (props) => {
 							<img className="top-img" src="https://i.imgur.com/phgH52r.png" alt="Profile" />
 							<img
 								className="bottom-img"
-								src={`https://raw.communitydragon.org/10.23/game/assets/ux/summonericons/profileicon${profileIcon}.png`}
+								src={`https://raw.communitydragon.org/11.23/game/assets/ux/summonericons/profileicon${profileIcon}.png`}
 								alt="Profile"
 							/>
 							<p className={summonerLevel.toString().length > 2 ? 'sum-level' : 'sum-level-short'}>
