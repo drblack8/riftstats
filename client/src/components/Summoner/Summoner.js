@@ -64,17 +64,23 @@ const Summoner = (props) => {
 
 	const handleUpdate = () => {
 		setButtonLoading(true);
+
 		fetch(`/api/match/post/${input}`)
 			.then((res) => res.json())
 			.then(
 				(result) => {
 					setMatches(result);
+					console.log('ok:', result);
 					setButtonLoading(false);
+					setIsLoaded(true)
+					window.location.reload()
 				},
 				(error) => {
 					setError({ second: error });
 				}
 			);
+
+
 	};
 
 	if (error) {
@@ -119,7 +125,7 @@ const Summoner = (props) => {
 				</div>
 				<div className="alert-message">
 					<p>We found you but we need to get you in the system first</p>
-					<p>so please hit the update button above!</p>
+					<p>so please hit the update button below!</p>
 				</div>
 				<div className="alert-update">
 					<UpdButton disabled={buttonLoading} onClick={handleUpdate}>

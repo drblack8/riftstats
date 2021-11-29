@@ -29,7 +29,7 @@ const Navbar = () => {
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
-          <Link to='/' className="navbar-logo">RiftStats</Link>
+          <Link to='/' className="navbar-logo">GXRift</Link>
         </h1>
             <div className="navbar-search">
             <NestedSearch />
@@ -51,7 +51,7 @@ const Navbar = () => {
             );
           })}
         </ul>
-        <NavLink to='/login'><Button>Login</Button></NavLink>
+        <NavLink to='/demo'><Button>Demo</Button></NavLink>
       </nav>
     );
 };
