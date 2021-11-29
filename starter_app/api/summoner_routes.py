@@ -18,7 +18,7 @@ def get_sum(username):
     )
 
     summoner = requests.get(account_url)
-    print(summoner)
+    print('SUM:', summoner.json())
     try:
         enc_id = summoner.json()['id']
 
@@ -28,13 +28,16 @@ def get_sum(username):
         )
         ranked_data = requests.get(ranked_url)
         print('RANKED DATA: ', ranked_data)
+        # account_id = summoner.json()['puuid'] THIS NEEDS TO BE NEW ACC ID
         account_id = summoner.json()['accountId']
+        puuid = summoner.json()['puuid']
         summoner_name = summoner.json()['name']
         profile_icon = summoner.json()['profileIconId']
         summoner_level = summoner.json()['summonerLevel']
         res = Match.query.filter(
             Match.participantIdentities.like(f'%{account_id}%')).order_by(Match.gameCreation.desc()).all()
         match_list = [match.to_dict() for match in res]
+        print('MATCHLIST:', match_list[1]['gameId'])
         return jsonify({
             "matchList": match_list,
             "token": account_id,

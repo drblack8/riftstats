@@ -11,6 +11,19 @@ match_routes = Blueprint('match', __name__)
 base_url = 'https://na1.api.riotgames.com/lol'
 new_base_url = 'https://americas.api.riotgames.com/lol'
 
+def find_pi(dict):
+    pi = []
+    parts = dict['participants']
+    for i in parts:
+        pi.append({
+            'particapntId': i['participantId'],
+            'player': {
+                'accountId': i['puuid'],
+                'profileIcon': i['profileIcon'],
+            },
+        })
+    return pi
+
 @match_routes.route('/post/<summoner>')
 def update_matches(summoner):
     key = os.environ.get('RIOT_API_KEY')
@@ -46,8 +59,6 @@ def update_matches(summoner):
         match_url = f'{new_base_url}/match/v5/matches/{match}?api_key={key}'
         try:
             response = requests.get(match_url)
-            if match == 'NA1_4113395636':
-                print(response.json()['info']['gameId'])
             game_id = response.json()['info']['gameId']
             platform_id = response.json()['info']['platformId']
             game_creation = response.json()['info']['gameCreation']
@@ -57,7 +68,7 @@ def update_matches(summoner):
             game_mode = response.json()['info']['gameMode']
             teams = json.dumps(response.json()['info']['teams'])
             part = json.dumps(response.json()['info']['participants'])
-            pi = json.dumps(response.json()['info']['participantIdentities'])
+            pi = json.dumps(find_pi(response.json()['info']))
             try:
                 new_match = Match(gameId=game_id,
                                   platformId=platform_id,

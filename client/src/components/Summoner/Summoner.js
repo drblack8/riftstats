@@ -47,6 +47,7 @@ const Summoner = (props) => {
 						console.log(e);
 					} finally {
 						setMatches(result.matchList);
+						console.log(result);
 						setSummoner(result.sumName);
 						setProfileIcon(result.profileIcon);
 						setRankedData(result.rankedInfo);
