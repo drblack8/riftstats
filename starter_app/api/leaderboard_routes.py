@@ -19,12 +19,14 @@ def leaderboards():
 
     players = requests.get(lb_url).json()
 
+
     res = []
     for i in range(0, 10):
         name = players[i]['summonerName']
+        encId = players[i]['summonerId']
         account_url = (
-            f'{base_url}/summoner/v4/summoners/by-name/'
-            f'{name}?api_key={key}'
+            f'{base_url}/summoner/v4/summoners/'
+            f'{encId}?api_key={key}'
         )
         summoner = requests.get(account_url)
         icon = summoner.json()['profileIconId']
