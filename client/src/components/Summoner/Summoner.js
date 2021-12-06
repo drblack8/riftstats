@@ -94,6 +94,11 @@ const Summoner = (props) => {
 				<div className="alert-message">
 					<p>The stats for this user are far too old.</p>
 					<p>Try refreshing, if that doesn't work please play a few games and update.</p>
+					<div className="alert-update">
+					<UpdButton disabled={buttonLoading} onClick={handleUpdate}>
+						{buttonLoading ? <ScaleLoader height={15} color="#ffffff" /> : 'Update'}
+					</UpdButton>
+				</div>
 				</div>
 			</div>
 		);
