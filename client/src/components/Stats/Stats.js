@@ -11,8 +11,9 @@ import Unranked from './Unranked';
 import ChampionStats from './ChampionStats/ChampionStats';
 
 const Stats = (props) => {
-	console.log(props);
+
 	const rankStatus = (props) => {
+
 		if (props.ranked.length === 0) {
 			return 3;
 		} else if (props.ranked.length === 1) {
@@ -22,8 +23,6 @@ const Stats = (props) => {
 				return 2;
 			}
 		} else if (props.ranked.length === 2) {
-			return 1;
-		} else if (props.ranked.length === 3) {
 			return 1;
 		}
 	};

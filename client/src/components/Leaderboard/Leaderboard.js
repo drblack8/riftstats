@@ -28,8 +28,6 @@ const Leaderboard = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(e.target.id);
-		console.log(e.target);
 		history.push(`/summoner/${e.target.id}`);
 	};
 

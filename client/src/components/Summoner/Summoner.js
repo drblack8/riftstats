@@ -25,6 +25,18 @@ const Summoner = (props) => {
 		return Math.floor(Math.random() * Math.floor(2));
 	};
 
+	const removeTFT = (arr) => {
+		let res = []
+		arr.forEach((e) => {
+			if (e.queueType !== 'RANKED_TFT_PAIRS' && e.queueType === 'RANKED_FLEX_SR') {
+				res.unshift(e)
+			} else if (e.queueType !== 'RANKED_TFT_PAIRS' && e.queueType === 'RANKED_SOLO_5x5') {
+				res.push(e)
+			}
+		})
+		return res
+	}
+
 	useEffect(() => {
 		setIsLoaded(false);
 		fetch(`/api/summoner/info/${input}`)
@@ -47,10 +59,10 @@ const Summoner = (props) => {
 						console.log(e);
 					} finally {
 						setMatches(result.matchList);
-						console.log(result);
 						setSummoner(result.sumName);
 						setProfileIcon(result.profileIcon);
 						setRankedData(result.rankedInfo);
+
 						setSummonerLevel(result.summonerLevel);
 						setIsLoaded(true);
 					}
@@ -176,7 +188,7 @@ const Summoner = (props) => {
 						</UpdButton>
 					</div>
 					<div className="sum-stats">
-						<Stats allMatches={matches} summonerName={summoner} ranked={rankedData} />
+						<Stats allMatches={matches} summonerName={summoner} ranked={removeTFT(rankedData)} />
 					</div>
 					<div className="sum-matches">
 						<ul>
