@@ -58,5 +58,8 @@ const data = {
 }
 
 export const Spells = (key) => {
+    if (data[key] === undefined) {
+      return 'http://ddragon.leagueoflegends.com/cdn/10.23.1/img/spell/SummonerSnowball.png'
+    }
     return data[key].imageUrl
 }

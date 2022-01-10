@@ -19,9 +19,8 @@ def leaderboards():
 
     players = requests.get(lb_url).json()
 
-
     res = []
-    for i in range(0, 10):
+    for i in range(0, len(players)):
         name = players[i]['summonerName']
         encId = players[i]['summonerId']
         account_url = (

@@ -68,5 +68,8 @@ const data = {
 }
 
 export const Keystones = (key) => {
+    if (data[key] === undefined) {
+        return 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/inspiration/masterkey/masterkey.png'
+      }
     return data[key].img
 }

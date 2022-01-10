@@ -41,7 +41,7 @@ const Match = (props) => {
     else if (props.match.gameCreation > 1605140418000) {
       return `https://ddragon.leagueoflegends.com/cdn/11.23.1/img/item/${key}.png`;
     } else {
-      return `http://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/${key}.png`
+      return `https://i.imgur.com/ecL2A5y.png`
     }
   };
 
@@ -71,10 +71,10 @@ const Match = (props) => {
             i
           ].player.summonerName.toLowerCase() === props.summoner.toLowerCase()
         ) {
-
+          console.log(props.match["participants"][i].perks.styles[0].style);
           setResults({
-			name: props.match["participantIdentities"][i].player.summonerName,
-			short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
+			      name: props.match["participantIdentities"][i].player.summonerName,
+			      short: props.match["participantIdentities"][i].player.summonerName.substring(0, 9) +"...",
             win: props.match.teams[0].win,
             champion: props.match["participants"][i].championId,
             spell1: props.match["participants"][i].summoner1Id,
@@ -151,6 +151,7 @@ const Match = (props) => {
             champion: props.match["participants"][i].championId,
             spell1: props.match["participants"][i].summoner1Id,
             spell2: props.match["participants"][i].summoner2Id,
+
             keystone: props.match["participants"][i].perks.styles[0].style,
             tree: props.match["participants"][i].perks.styles[1].style,
             level: props.match["participants"][i].summoner2Id,
