@@ -1,0 +1,9 @@
+.demo {
+    margin-top: 5%;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+}

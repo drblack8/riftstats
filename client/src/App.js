@@ -4,7 +4,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/User/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Summoner from "./components/Summoner/Summoner";
-import Demo from "./components/Demo";
+import Demo from "./components/Demo/Demo";
 
 function App() {
   return (
